@@ -1,0 +1,69 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+import { Disposable } from 'vs/base/common/lifecycle';
+import { ICodeEditor } from 'vs/editor/browser/editorBrowser';
+// import { IEditorContribution } from 'vs/editor/common/editorCommon';
+import { IWorkbenchContribution, registerWorkbenchContribution2 } from 'vs/workbench/common/contributions';
+import { Extensions as WorkbenchExtensions, IWorkbenchContributionsRegistry } from 'vs/workbench/common/contributions';
+import { IEditorService } from 'vs/workbench/services/editor/common/editorService';
+import { LifecyclePhase } from 'vs/workbench/services/lifecycle/common/lifecycle';
+import { Registry } from 'vs/platform/registry/common/platform';
+import { IMyCustomWidgetService } from '../common/myCustomWidget';
+
+export class MyCustomWidget extends Disposable implements IWorkbenchContribution {
+	static ID = 'workbench.contrib.myCustomWidget';
+	constructor(
+		@IEditorService private readonly editorService: IEditorService,
+		@IMyCustomWidgetService private readonly myCustomWidgetService: IMyCustomWidgetService,
+	) {
+		super();
+		this._register(this.editorService.onDidActiveEditorChange(() => {
+			this.updateWidget();
+		}));
+	}
+	override dispose(): void {
+		const activeEditorPane = this.editorService.activeEditorPane;
+		if (activeEditorPane) {
+			const editor = activeEditorPane?.getControl() as ICodeEditor;
+			if (editor && 'addContentWidget' in editor) {
+				this.myCustomWidgetService.hideWidget(editor);
+			}
+		}
+		super.dispose();
+	}
+	private updateWidget(): void {
+		// Get the active editor pane
+		const activeEditorPane = this.editorService.activeEditorPane;
+		if (!activeEditorPane) return;
+		// Get the editor control (ICodeEditor instance)
+		const editor = activeEditorPane?.getControl() as ICodeEditor;
+		if (!editor || !('addContentWidget' in editor)) return;
+		// Create and add widget to current editor
+		this.createWidgetInEditor(editor);
+	}
+	private createWidgetInEditor(editor: ICodeEditor): void {
+		const domNode = document.createElement('div');
+		domNode.className = 'my-custom-widget';
+		const textarea = document.createElement('textarea');
+		const button = document.createElement('button');
+		button.textContent = 'Submit';
+		domNode.appendChild(textarea);
+		domNode.appendChild(button);
+		editor.addContentWidget({
+			getId: () => 'myCustomWidget',
+			getDomNode: () => domNode,
+			getPosition: () => ({
+				position: editor.getPosition(),
+				preference: [1]
+			})
+		});
+	}
+}
+
+Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench)
+	.registerWorkbenchContribution(
+		MyCustomWidget,
+		LifecyclePhase.Restored
+	);

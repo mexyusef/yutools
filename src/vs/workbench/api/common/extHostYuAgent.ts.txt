@@ -1,0 +1,39 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+import { ExtHostCustomWidgetsShape, IMainContext, MainContext, MainThreadCustomWidgetsShape } from './extHost.protocol.js';
+// import { RPCProtocol } from '../../services/extensions/common/rpcProtocol.js';
+import { IWidgetOptions } from '../../contrib/yuagent/customWidgetView.js';
+// import { createDecorator } from '../../../platform/instantiation/common/instantiation.js';
+
+export class ExtHostCustomWidgets implements ExtHostCustomWidgetsShape {
+	private readonly _proxy: MainThreadCustomWidgetsShape;
+
+	// constructor(rpcProtocol: RPCProtocol) {
+	// 	this._proxy = rpcProtocol.getProxy(MainContext.MainThreadCustomWidgets);
+	// }
+	constructor(mainContext: IMainContext) {
+		this._proxy = mainContext.getProxy(MainContext.MainThreadCustomWidgets);
+	}
+
+	async $createWidget(widgetId: string, options: IWidgetOptions): Promise<void> {
+		return this._proxy.$createWidget(widgetId, options);
+	}
+
+	async $showWidget(widgetId: string): Promise<void> {
+		return this._proxy.$showWidget(widgetId);
+	}
+
+	async $hideWidget(widgetId: string): Promise<void> {
+		return this._proxy.$hideWidget(widgetId);
+	}
+
+	async $disposeWidget(widgetId: string): Promise<void> {
+		return this._proxy.$disposeWidget(widgetId);
+	}
+}
+
+// export interface IExtHostCustomWidgets extends ExtHostCustomWidgets { }
+// export const IExtHostCustomWidgets = createDecorator<IExtHostCustomWidgets>('IExtHostCustomWidgets');
+

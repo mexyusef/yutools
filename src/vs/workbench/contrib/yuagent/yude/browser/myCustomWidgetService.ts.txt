@@ -1,0 +1,55 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+import { InstantiationType, registerSingleton } from 'vs/platform/instantiation/common/extensions';
+import { IEditorService } from 'vs/workbench/services/editor/common/editorService';
+import { ICodeEditor } from '../../../../editor/browser/editorBrowser';
+import { IMyCustomWidgetService } from '../common/myCustomWidget';
+
+export class MyCustomWidgetService implements IMyCustomWidgetService {
+	declare readonly _serviceBrand: undefined;
+	private widgets: Map<string, any> = new Map();
+	constructor(
+		@IEditorService private readonly editorService: IEditorService,
+	) { }
+	showWidget(editor: ICodeEditor): void {
+		const domNode = document.createElement('div');
+		domNode.className = 'my-custom-widget';
+		const textarea = document.createElement('textarea');
+		const button = document.createElement('button');
+		button.textContent = 'Submit';
+		domNode.appendChild(textarea);
+		domNode.appendChild(button);
+		const widget = {
+			getId: () => 'myCustomWidget',
+			getDomNode: () => domNode,
+			getPosition: () => ({
+				position: editor.getPosition(),
+				preference: [1]
+			})
+		};
+		this.widgets.set(editor.getId(), widget);
+		editor.addContentWidget(widget);
+	}
+	hideWidget(editor: ICodeEditor): void {
+		const widget = this.widgets.get(editor.getId());
+		if (widget) {
+			editor.removeContentWidget(widget);
+			this.widgets.delete(editor.getId());
+		}
+	}
+	updateWidgetContent(content: string): void {
+		// Implementation
+	}
+	isWidgetVisible(): boolean {
+		// Implementation
+		return false;
+	}
+	getWidgetPosition(editorId: string): { line: number; column: number } | undefined {
+		// Implementation
+		return undefined;
+	}
+}
+// registerSingleton(IMyCustomWidgetService, MyCustomWidgetService);
+registerSingleton(IMyCustomWidgetService, MyCustomWidgetService, InstantiationType.Delayed);

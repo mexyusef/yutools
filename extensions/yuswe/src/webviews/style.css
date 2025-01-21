@@ -1,0 +1,71 @@
+@import '@vscode/codicons/dist/codicon.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  padding-inline: 0px;
+}
+
+#root {
+  height: 100vh;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+.mention {
+  @apply rounded bg-badge-background px-[0.15em] py-[0.05em] text-[0.9em] text-badge-foreground transition-colors duration-200;
+}
+
+.command-suggestion {
+  @apply rounded bg-badge-background px-[0.15em] py-[0.05em] text-[0.9em] text-badge-foreground transition-colors duration-200;
+}
+
+.tiptap .is-empty::before {
+  @apply text-input-placeholder-foreground;
+  @apply content-[attr(data-placeholder)];
+  @apply float-left;
+  @apply pointer-events-none;
+  @apply h-0;
+}
+
+.gap-cursor {
+  @apply border-t border-white;
+}
+
+.tiptap img {
+  @apply h-auto max-w-[96%] border border-transparent;
+}
+
+.tiptap img.ProseMirror-selectednode {
+  @apply border border-badge-background;
+}
+
+.markdown-content pre.shiki {
+  @apply mt-2 overflow-x-auto;
+}
+
+.markdown-content pre.shiki code {
+  @apply inline-block min-w-full rounded-none p-2;
+}
+
+.markdown-content {
+  @apply space-y-2;
+}
+
+.markdown-content :is(ol, ul) {
+  @apply pl-4;
+}
+
+.markdown-content li::before {
+  content: '•';
+  @apply -ml-1 mr-2 opacity-75;
+}

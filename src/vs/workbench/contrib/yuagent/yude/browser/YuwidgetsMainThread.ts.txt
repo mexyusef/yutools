@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+import { IYuwidgetsApi } from '../common/IYuwidgetsApi';
+import { YuwidgetsService } from './YuwidgetsService';
+
+export class YuwidgetsMainThread {
+	private yuwidgetsService: YuwidgetsService;
+
+	constructor() {
+		this.yuwidgetsService = new YuwidgetsService();
+	}
+
+	registerYuwidgetsApi(): IYuwidgetsApi {
+		return this.yuwidgetsService.getYuwidgetsApi();
+	}
+}

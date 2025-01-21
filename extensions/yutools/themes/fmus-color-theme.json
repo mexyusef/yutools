@@ -1,0 +1,33 @@
+{
+  "name": "FMUS Color Theme",
+  "type": "dark",
+  "colors": {},
+  "tokenColors": [
+    {
+      "scope": "meta.marker.start.fmus",
+      "settings": {
+        "foreground": "#FF5733", // Bright orange for start marker
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "meta.marker.end.fmus",
+      "settings": {
+        "foreground": "#33FF57", // Bright green for end marker
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "meta.body.content.fmus",
+      "settings": {
+        "foreground": "#FFFFFF" // Bright white for the body content
+      }
+    },
+    {
+      "scope": "text.html.markdown",
+      "settings": {
+        "foreground": "#CCCCCC" // Subdued markdown color within the body
+      }
+    }
+  ]
+}

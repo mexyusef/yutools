@@ -1,0 +1,14 @@
+{
+  "iconDefinitions": {
+    "fmusFile": {
+      "iconPath": "./resources/fmus-icon.png"
+    }
+  },
+  "fileExtensions": {
+    "fmus": "fmusFile"
+  },
+  "fileNames": {},
+  "languageIds": {
+    "fmus": "fmusFile"
+  }
+}

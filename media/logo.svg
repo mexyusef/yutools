@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background (optional) -->
+  <rect width="200" height="200" fill="#1e1e1e" rx="20" />
+
+  <!-- Swiss Army Knife Handle -->
+  <rect x="50" y="30" width="100" height="140" fill="#007acc" rx="10" />
+
+  <!-- Tools -->
+  <!-- Code Bracket -->
+  <text x="100" y="70" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle">{ }</text>
+
+  <!-- Magnifying Glass -->
+  <circle cx="80" cy="110" r="10" fill="none" stroke="#ffffff" stroke-width="2" />
+  <line x1="90" y1="120" x2="100" y2="130" stroke="#ffffff" stroke-width="2" />
+
+  <!-- Pencil -->
+  <polygon points="120,100 130,90 140,100 130,110" fill="#ffffff" />
+  <line x1="130" y1="90" x2="130" y2="110" stroke="#ffffff" stroke-width="2" />
+
+  <!-- Chip/Processor -->
+  <rect x="70" y="130" width="20" height="20" fill="#ffffff" rx="3" />
+  <rect x="110" y="130" width="20" height="20" fill="#ffffff" rx="3" />
+
+  <!-- Plug/Connector -->
+  <circle cx="100" cy="160" r="8" fill="#ffffff" />
+  <rect x="96" y="150" width="8" height="20" fill="#ffffff" />
+
+  <!-- Text -->
+  <text x="100" y="190" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Swiss Army Dev</text>
+</svg>

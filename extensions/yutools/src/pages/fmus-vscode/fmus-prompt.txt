@@ -1,0 +1,153 @@
+### Prompt:
+
+You are to generate a project of a specified type (e.g., Django, Node / Express, Vue, etc.) and represent it using the FMUS format.
+The specification for the project would be given at the very end of this instruction (after the information about the FMUS format), and it could be a vague specification, but you are assumed to understand the specification and what the user wants.
+
+The FMUS format is a way to represent the filesystem structure and content of all text files in a single file.Follow the FMUS format specifications and examples provided below closely.
+
+#### FMUS Format Specifications:
+
+1. ** FMUS entries **:
+- Each file or directory is represented as an "FMUS entry" separated by an empty line.
+- There is a special entry called `index/fmus` that acts as the main entry.
+
+2. ** FMUS entry structure **:
+- ** Prefix **: `--% <title>`
+  - `--%` is the start tag.
+    - `<title>` is the file path or`index/fmus`.
+- ** Content **: Any multiline text content following the prefix.
+- ** Suffix **: `--#`
+  - `--#` is the end tag.
+
+3. ** Example of an FMUS entry **:
+```
+--% ./src/index.js
+// print hello to console
+console.log('hello, world!');
+--#
+    ```
+
+4. ** Index FMUS entry **:
+- Contains a DSL called fmuslang, which is a tree - based language for representing the directory structure and file references.
+- The root is represented as `__ROOT_NODE__,d`.
+- Directories end with `,d` and files with `,f` followed by`(e=__REFERENCE_TO_FMUS_FILEPATH__=<title>)`.
+
+5. ** Example of index / fmus **:
+```
+--% index/fmus
+__ROOT_NODE__,d
+    %__REFERENCE_TO_FMUS_FILEPATH__=__FILE_NODE__
+    package.json,f(e=__REFERENCE_TO_FMUS_FILEPATH__=./package.json)
+    src,d
+        index.js,f(e=__REFERENCE_TO_FMUS_FILEPATH__=./src/index.js)
+--#
+```
+
+#### Task:
+
+1. ** Generate a project **:
+- Choose a type of project (e.g., Django, Node / Express, Vue).
+- Create the necessary files and directories for a basic setup of the chosen project.
+
+2. ** Write the project in FMUS format **:
+- Use the FMUS format specifications to represent the filesystem structure and the content of all text files in a single `.fmus` file.
+
+#### Example Projects:
+
+1. ** Node / Express Project **:
+- `index.js`: Entry point for the Node / Express application.
+- `package.json`: Contains metadata about the project.
+- `routes/`: Directory containing route handlers.
+- `views/`: Directory containing view templates.
+
+2. ** Vue Project **:
+- `src/main.js`: Entry point for the Vue application.
+- `src/App.vue`: Main component of the Vue application.
+- `public/index.html`: The HTML template.
+
+#### Example file contents for a Node / Express project:
+
+  1. ** index.js **:
+```javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+});
+```
+
+2. **package.json**:
+```json
+{
+  "name": "express-app",
+    "version": "1.0.0",
+      "description": "A simple Express application",
+        "main": "index.js",
+          "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+```
+
+3. **index/fmus**:
+```
+--% index / fmus
+__ROOT_NODE__, d
+  % __REFERENCE_TO_FMUS_FILEPATH__=__FILE_NODE__
+package.json, f(e = __REFERENCE_TO_FMUS_FILEPATH__ =./ package.json)
+index.js, f(e = __REFERENCE_TO_FMUS_FILEPATH__ =./ index.js)
+--#
+  ```
+
+#### Expected FMUS Representation for a Node/Express Project:
+
+```
+--% index / fmus
+__ROOT_NODE__, d
+  % __REFERENCE_TO_FMUS_FILEPATH__=__FILE_NODE__
+package.json, f(e = __REFERENCE_TO_FMUS_FILEPATH__ =./ package.json)
+index.js, f(e = __REFERENCE_TO_FMUS_FILEPATH__ =./ index.js)
+--#
+
+--% ./ index.js
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+--#
+
+--% ./ package.json
+{
+  "name": "express-app",
+    "version": "1.0.0",
+      "description": "A simple Express application",
+        "main": "index.js",
+          "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+--#
+  ```
+
+Follow this template to generate and represent the project you are assigned to generate.
+
+Here's the specification for the project you have to generate:

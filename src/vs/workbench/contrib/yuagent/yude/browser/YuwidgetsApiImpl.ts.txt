@@ -1,0 +1,80 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+import { TextareaWidget } from './widgets/TextareaWidget';
+import { ComboboxWidget } from './widgets/ComboboxWidget';
+import { InputTextWidget } from './widgets/InputTextWidget';
+import { IYuwidgetsApi } from '../common/IYuwidgetsApi';
+
+export class YuwidgetsApiImpl implements IYuwidgetsApi {
+	private textareaWidget: TextareaWidget;
+	private comboboxWidget: ComboboxWidget;
+	private inputTextWidget: InputTextWidget;
+
+	constructor() {
+		this.textareaWidget = new TextareaWidget();
+		this.comboboxWidget = new ComboboxWidget();
+		this.inputTextWidget = new InputTextWidget();
+	}
+
+	showTextarea(): void {
+		this.textareaWidget.show();
+	}
+
+	hideTextarea(): void {
+		this.textareaWidget.hide();
+	}
+
+	toggleTextarea(): void {
+		this.textareaWidget.toggle();
+	}
+
+	setTextareaValue(value: string): void {
+		this.textareaWidget.setValue(value);
+	}
+
+	getTextareaValue(): string {
+		return this.textareaWidget.getValue();
+	}
+
+	showCombobox(): void {
+		this.comboboxWidget.show();
+	}
+
+	hideCombobox(): void {
+		this.comboboxWidget.hide();
+	}
+
+	toggleCombobox(): void {
+		this.comboboxWidget.toggle();
+	}
+
+	setComboboxValue(value: string): void {
+		this.comboboxWidget.setValue(value);
+	}
+
+	getComboboxValue(): string {
+		return this.comboboxWidget.getValue();
+	}
+
+	showInputText(): void {
+		this.inputTextWidget.show();
+	}
+
+	hideInputText(): void {
+		this.inputTextWidget.hide();
+	}
+
+	toggleInputText(): void {
+		this.inputTextWidget.toggle();
+	}
+
+	setInputTextValue(value: string): void {
+		this.inputTextWidget.setValue(value);
+	}
+
+	getInputTextValue(): string {
+		return this.inputTextWidget.getValue();
+	}
+}

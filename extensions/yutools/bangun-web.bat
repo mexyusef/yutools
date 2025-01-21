@@ -1,0 +1,1 @@
+node build-tsx.js && node build-css.js

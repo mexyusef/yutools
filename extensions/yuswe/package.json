@@ -1,0 +1,292 @@
+{
+  "name": "sota-swe",
+  "displayName": "CodeStory: SOTA SWE",
+  "publisher": "codestoryai",
+  "description": "Codestory's extension for SOTA agentic editing",
+  "version": "0.0.11",
+  "private": true,
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codestoryai/extension"
+  },
+  "homepage": "https://codestory.ai",
+  "icon": "dist/icon.png",
+  "categories": [
+    "AI",
+    "Chat",
+    "Programming Languages",
+    "Education",
+    "Snippets",
+    "Testing"
+  ],
+  "keywords": [
+    "aide",
+    "codestory",
+    "claude",
+    "dev",
+    "openrouter",
+    "coding",
+    "agent",
+    "autonomous",
+    "chatgpt",
+    "sonnet",
+    "ai",
+    "llama"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "l10n": "./l10n",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sota-swe.show-browser",
+        "title": "Open browser",
+        "icon": "$(browser)",
+        "category": "SotaSWE"
+      },
+      {
+        "command": "sota-swe.go-to-new-task",
+        "title": "Start new task",
+        "icon": "$(add)",
+        "category": "SotaSWE"
+      },
+      {
+        "command": "sota-swe.go-to-settings",
+        "title": "Show settings",
+        "icon": "$(settings-gear)",
+        "category": "SotaSWE"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "sota-swe.show-browser",
+          "when": "view == sota-swe-panel",
+          "group": "navigation@2"
+        },
+        {
+          "command": "sota-swe.go-to-settings",
+          "when": "view == sota-swe-panel",
+          "group": "navigation@1"
+        },
+        {
+          "command": "sota-swe.go-to-new-task",
+          "when": "view == sota-swe-panel",
+          "group": "navigation@0"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sota-swe",
+          "title": "SotaSWE",
+          "icon": "./dist/icon.png"
+        }
+      ]
+    },
+    "views": {
+      "sota-swe": [
+        {
+          "type": "webview",
+          "id": "sota-swe-panel",
+          "name": "SotaSWE"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-flow": "^7.25.9",
+    "@svgr/core": "^8.1.0",
+    "@tailwindcss/forms": "^0.5.9",
+    "@types/diff": "^5.0.3",
+    "@types/js-levenshtein": "^1.1.3",
+    "@types/lodash": "^4.14.202",
+    "@types/minimist": "^1.2.5",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "18.x",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/uuid": "^9.0.2",
+    "@types/vscode": "^1.84.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "autoprefixer": "^10.4.20",
+    "esbuild": "^0.23.0",
+    "esbuild-plugin-svgr": "^3.0.0",
+    "esbuild-style-plugin": "^1.6.3",
+    "eslint": "^9.13.0",
+    "flow-remove-types": "^2.256.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.0.1",
+    "@radix-ui/react-alert-dialog": "^1.1.2",
+    "@radix-ui/react-checkbox": "^1.1.2",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@shikijs/markdown-it": "^1.23.1",
+    "@tiptap/extension-document": "^2.9.1",
+    "@tiptap/extension-history": "^2.9.1",
+    "@tiptap/extension-image": "^2.9.1",
+    "@tiptap/extension-paragraph": "^2.9.1",
+    "@tiptap/extension-placeholder": "^2.9.1",
+    "@tiptap/extension-text": "^2.9.1",
+    "@tiptap/pm": "^2.9.1",
+    "@tiptap/react": "^2.9.1",
+    "@tiptap/suggestion": "^2.9.1",
+    "@types/http-proxy": "^1.17.15",
+    "@types/markdown-it": "^14.1.2",
+    "@vscode/codicons": "^0.0.36",
+    "axios": "^1.7.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "delay": "^6.0.0",
+    "diff": "^5.1.0",
+    "http-proxy": "^1.18.1",
+    "isomorphic-dompurify": "^2.16.0",
+    "js-levenshtein": "^1.1.6",
+    "lodash": "^4.17.21",
+    "lru-cache": "^10.2.0",
+    "markdown-it": "^14.1.0",
+    "minimist": "^1.2.8",
+    "minisearch": "^7.1.0",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.0.1",
+    "parse5": "^7.2.1",
+    "posthog-node": "^3.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "seti-file-icons": "^0.0.8",
+    "shiki": "^1.23.1",
+    "tailwind-merge": "^2.5.4",
+    "ts-morph": "^19.0.0",
+    "uuid": "^11.0.3",
+    "vscode-uri": "^3.0.8",
+    "web-tree-sitter": "^0.20.8",
+    "winston": "^3.10.0",
+    "winston-vscode": "^1.0.0",
+    "ws": "^7",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.1"
+  },
+  "configuration": {
+    "type": "object",
+    "title": "Aide Extension settings",
+    "properties": {
+      "aide.resetNotifications": {
+        "type": "boolean",
+        "default": false,
+        "description": "Reset 'Don't show again' notifications"
+      },
+      "aide.activeDirectories": {
+        "type": "string",
+        "default": "",
+        "description": "Set the active directories for Aide to look at as comma separated values of absolute path. For example: /a/b/c , /d/e/f"
+      },
+      "aide.testSuiteRunCommand": {
+        "type": "string",
+        "default": "",
+        "description": "Tell Aide how to run your test suite, for example for jest framework and when using yarn the command will be: `yarn run jest test`"
+      },
+      "codestory.openaiApiKey": {
+        "type": "string",
+        "default": "NOT_SET",
+        "description": "Use a custom api key for OpenAI"
+      },
+      "codestory.disableTelemetry": {
+        "type": "boolean",
+        "default": false,
+        "description": "Disable telemetry and logging on the backend"
+      },
+      "codestory.disableUseNameLookup": {
+        "type": "boolean",
+        "default": false,
+        "description": "Disable user name lookup from env"
+      },
+      "aide.systemInstruction": {
+        "type": "string",
+        "default": "",
+        "description": "Set custom instructions for the AI, this can be information about the repository you are working or nuances you want the AI to handle"
+      },
+      "aide.useExactSelection": {
+        "type": "boolean",
+        "default": true,
+        "description": "Uses the exact matching of the selection rather than expanding on it"
+      },
+      "aide.sidecarURL": {
+        "type": "string",
+        "default": "http://127.0.0.1:42424",
+        "description": "The url of the sidecar which is required for aide to work"
+      },
+      "aide.sidecarUseSelfRun": {
+        "type": "boolean",
+        "default": false,
+        "description": "If the side-binary is being run on its own, we can set this to true allowing for rapid proto-typing"
+      },
+      "aide.disableIndexing": {
+        "type": "boolean",
+        "default": true,
+        "description": "Disable indexing of the repository"
+      },
+      "aide.inlineCompletion.triggerMode": {
+        "type": "string",
+        "default": "automatic",
+        "description": "Set the trigger mode for inline completions, can be either of automatic or manual"
+      },
+      "aide.inlineCompletion.enableTabAutocomplete": {
+        "type": "boolean",
+        "default": true,
+        "description": "Enable tab autocomplete for inline completions"
+      },
+      "aide.inlineCompletion.toggleTabAutoCompleteEnabled": {
+        "type": "boolean",
+        "default": true,
+        "description": "Toggle tab autocomplete for inline completions"
+      },
+      "aide.inlineCompletion.copyClipBoardContent": {
+        "type": "boolean",
+        "default": true,
+        "description": "Should we allow clip board content to be sent over"
+      },
+      "aide.deepReasoning": {
+        "type": "boolean",
+        "default": false,
+        "description": "Should use deep reasoning before making edits"
+      },
+      "aide.specialToolAgentUseAtYourOwnRisk": {
+        "type": "boolean",
+        "default": false,
+        "description": "Tool use agent, use it at your own risk this is not ready for production yet"
+      }
+    }
+  }
+}

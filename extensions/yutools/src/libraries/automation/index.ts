@@ -1,0 +1,13 @@
+export { BrowserClient } from './core/BrowserClient';
+export { login } from './actions/login';
+export { click } from './actions/click';
+export { type } from './actions/type';
+export { navigate } from './actions/navigate';
+export { pressKey } from './actions/pressKey';
+export { waitForElement } from './actions/waitForElement';
+export { getText } from './actions/getText';
+export { getAttribute } from './actions/getAttribute';
+export { screenshot } from './actions/screenshot';
+export { uploadFile } from './actions/uploadFile';
+export { selectDropdown } from './actions/selectDropdown';
+export { hover } from './actions/hover';

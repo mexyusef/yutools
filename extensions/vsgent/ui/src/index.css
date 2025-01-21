@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  /* Blue Theme */
+  [data-theme="blue"] {
+    --background: 217 100% 99%;
+    --foreground: 217 91% 4%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 217 100% 99%;
+    --secondary: 217 50% 95%;
+    --secondary-foreground: 217 91% 4%;
+    --muted: 217 50% 95%;
+    --muted-foreground: 217 30% 40%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 217 100% 99%;
+    --border: 217 30% 90%;
+    --input: 217 30% 90%;
+    --ring: 217 91% 60%;
+  }
+
+  /* Purple Theme */
+  [data-theme="purple"] {
+    --background: 270 100% 99%;
+    --foreground: 270 91% 4%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 270 100% 99%;
+    --secondary: 270 50% 95%;
+    --secondary-foreground: 270 91% 4%;
+    --muted: 270 50% 95%;
+    --muted-foreground: 270 30% 40%;
+    --accent: 270 91% 65%;
+    --accent-foreground: 270 100% 99%;
+    --border: 270 30% 90%;
+    --input: 270 30% 90%;
+    --ring: 270 91% 65%;
+  }
+
+  /* Green Theme */
+  [data-theme="green"] {
+    --background: 150 100% 99%;
+    --foreground: 150 91% 4%;
+    --primary: 150 91% 45%;
+    --primary-foreground: 150 100% 99%;
+    --secondary: 150 50% 95%;
+    --secondary-foreground: 150 91% 4%;
+    --muted: 150 50% 95%;
+    --muted-foreground: 150 30% 40%;
+    --accent: 150 91% 45%;
+    --accent-foreground: 150 100% 99%;
+    --border: 150 30% 90%;
+    --input: 150 30% 90%;
+    --ring: 150 91% 45%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  /* Dark Blue Theme */
+  .dark[data-theme="blue"] {
+    --background: 217 50% 4%;
+    --foreground: 217 91% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 217 91% 96%;
+    --secondary: 217 50% 12%;
+    --secondary-foreground: 217 91% 96%;
+    --muted: 217 50% 12%;
+    --muted-foreground: 217 30% 70%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 217 91% 96%;
+    --border: 217 30% 20%;
+    --input: 217 30% 20%;
+    --ring: 217 91% 60%;
+  }
+
+  /* Dark Purple Theme */
+  .dark[data-theme="purple"] {
+    --background: 270 50% 4%;
+    --foreground: 270 91% 96%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 270 91% 96%;
+    --secondary: 270 50% 12%;
+    --secondary-foreground: 270 91% 96%;
+    --muted: 270 50% 12%;
+    --muted-foreground: 270 30% 70%;
+    --accent: 270 91% 65%;
+    --accent-foreground: 270 91% 96%;
+    --border: 270 30% 20%;
+    --input: 270 30% 20%;
+    --ring: 270 91% 65%;
+  }
+
+  /* Dark Green Theme */
+  .dark[data-theme="green"] {
+    --background: 150 50% 4%;
+    --foreground: 150 91% 96%;
+    --primary: 150 91% 45%;
+    --primary-foreground: 150 91% 96%;
+    --secondary: 150 50% 12%;
+    --secondary-foreground: 150 91% 96%;
+    --muted: 150 50% 12%;
+    --muted-foreground: 150 30% 70%;
+    --accent: 150 91% 45%;
+    --accent-foreground: 150 91% 96%;
+    --border: 150 30% 20%;
+    --input: 150 30% 20%;
+    --ring: 150 91% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+textarea:focus {
+	outline: 1.5px solid var(--vscode-focusBorder, #007fd4);
+}
+
+vscode-button::part(control):focus {
+	outline: none;
+}
+
+/*
+Use vscode native scrollbar styles
+https://github.com/gitkraken/vscode-gitlens/blob/b1d71d4844523e8b2ef16f9e007068e91f46fd88/src/webviews/apps/home/home.scss
+*/
+
+html {
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	line-height: 1.25;
+}
+
+body.scrollable,
+.scrollable,
+body.code-block-scrollable,
+.code-block-scrollable {
+	border-color: transparent;
+	transition: border-color 0.7s linear;
+}
+
+body:hover.scrollable,
+body:hover .scrollable,
+body:focus-within.scrollable,
+body:focus-within .scrollable,
+body:hover.code-block-scrollable,
+body:hover .code-block-scrollable,
+body:focus-within.code-block-scrollable,
+body:focus-within .code-block-scrollable {
+	border-color: var(--vscode-scrollbarSlider-background);
+	transition: none;
+}
+
+.scrollable::-webkit-scrollbar-corner {
+	background-color: transparent !important;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+	background-color: transparent;
+	border-color: inherit;
+	border-right-style: inset;
+	border-right-width: calc(100vw + 100vh);
+	border-radius: unset !important;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+	border-color: var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+.scrollable::-webkit-scrollbar-thumb:active {
+	border-color: var(--vscode-scrollbarSlider-activeBackground);
+}
+
+/*
+Fix VSCode ignoring webkit scrollbar modifiers
+https://github.com/microsoft/vscode/issues/213045
+*/
+@supports selector(::-webkit-scrollbar) {
+	html {
+		scrollbar-color: unset;
+	}
+}
+
+/*
+The above scrollbar styling uses some transparent background color magic to accomplish its animation. However this doesn't play nicely with SyntaxHighlighter, so we need to set a background color for the code blocks' horizontal scrollbar. This actually has the unintended consequence of always showing the scrollbar which I prefer since it makes it more obvious that there is more content to scroll to.
+*/
+
+.code-block-scrollable::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.code-block-scrollable::-webkit-scrollbar-thumb {
+	background-color: var(--vscode-scrollbarSlider-background);
+	border-radius: 5px;
+	border: 2px solid transparent;
+	background-clip: content-box;
+}
+
+.code-block-scrollable::-webkit-scrollbar-thumb:hover {
+	background-color: var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+.code-block-scrollable::-webkit-scrollbar-thumb:active {
+	background-color: var(--vscode-scrollbarSlider-activeBackground);
+}
+
+.code-block-scrollable::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
+
+/*
+Dropdown label
+https://github.com/microsoft/vscode-webview-ui-toolkit/tree/main/src/dropdown#with-label
+*/
+.dropdown-container {
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.dropdown-container label {
+	display: block;
+	color: var(--vscode-foreground);
+	cursor: pointer;
+	font-size: var(--vscode-font-size);
+	line-height: normal;
+	margin-bottom: 2px;
+}
+
+/* Fix scrollbar in dropdown */
+
+vscode-dropdown::part(listbox) {
+	border-color: var(--vscode-scrollbarSlider-background);
+	transition: none;
+	scrollbar-color: var(--vscode-scrollbarSlider-background) transparent;
+}
+
+/* Faded icon buttons in textfields */
+
+.input-icon-button {
+	cursor: pointer;
+	opacity: 0.65;
+}
+.input-icon-button:hover {
+	opacity: 1;
+}
+.input-icon-button.disabled {
+	cursor: not-allowed;
+	opacity: 0.4;
+}
+.input-icon-button.disabled:hover {
+	opacity: 0.4;
+}
+
+/* Context mentions */
+
+.mention-context-textarea-highlight {
+	background-color: color-mix(in srgb, var(--vscode-badge-foreground) 30%, transparent);
+	border-radius: 3px;
+	box-shadow: 0 0 0 0.5px color-mix(in srgb, var(--vscode-badge-foreground) 30%, transparent);
+	color: transparent;
+	/* padding: 0.5px;
+	margin: -0.5px;
+	position: relative;
+	bottom: -0.5px; */
+}
+
+.mention-context-highlight {
+	background-color: color-mix(in srgb, var(--vscode-badge-foreground) 30%, transparent);
+	border-radius: 3px;
+}
+
+.mention-context-highlight-with-shadow {
+	background-color: color-mix(in srgb, var(--vscode-badge-foreground) 30%, transparent);
+	border-radius: 3px;
+	box-shadow: 0 0 0 0.5px color-mix(in srgb, var(--vscode-badge-foreground) 30%, transparent);
+}

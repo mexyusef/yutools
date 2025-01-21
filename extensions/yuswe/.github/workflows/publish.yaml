@@ -1,0 +1,125 @@
+name: Publish Extension
+
+on:
+  # Stable releases: triggered by GitHub release events
+  release:
+    types: [released]
+
+  # Experimental builds: triggered by pushes to the experimental branch
+  push:
+    branches:
+      - experimental
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # For stable releases, the ref is a tag; for experimental, it's a branch.
+      # We only need to checkout the specific ref when it's a release event.
+      - name: Checkout ref
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            git checkout ${GITHUB_REF#refs/tags/}
+          else
+            git checkout experimental
+          fi
+
+      - name: Make sure version isn't odd
+        run: |
+          node scripts/versionCheck.js
+
+      - name: Use Node.js from .nvmrc
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # If on the experimental branch, modify displayName in package.json
+      - name: Update extension name for Experimental release
+        if: ${{ github.ref_name == 'experimental' }}
+        run: |
+          sed -i 's/"displayName": "Your Extension Name"/"displayName": "Your Extension Name (Experimental)"/' package.json
+
+      - name: Package the extension
+        run: npx vsce package --no-dependencies
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extension
+          path: '*.vsix'
+
+  release:
+    # Stable release job
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ github.event_name == 'release' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --local user.email "team@codestory.ai"
+          git config --local user.name "CodeStory Team"
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: '*extension'
+          path: vsix-artifacts
+          merge-multiple: true
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: vsix-artifacts/*.vsix
+          repository: codestoryai/extension
+
+  publish:
+    # Experimental publish job
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+    if: ${{ github.event_name == 'push' && github.ref_name == 'experimental' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --local user.email "team@codestory.ai"
+          git config --local user.name "CodeStory Team"
+
+      - name: Pull latest changes from experimental
+        run: git checkout experimental
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: '*extension'
+          path: vsix-artifacts
+          merge-multiple: true
+
+      - name: Publish to VS Code Marketplace
+        run: npx vsce publish --packagePath vsix-artifacts/*.vsix
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
+
+      - name: Publish (Open VSX Registry)
+        continue-on-error: true
+        run: npx ovsx publish -p ${{ secrets.VSX_REGISTRY_TOKEN }} --packagePath vsix-artifacts/*.vsix

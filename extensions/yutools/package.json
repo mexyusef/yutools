@@ -1,0 +1,4385 @@
+{
+  "name": "yutools",
+  "displayName": "yutools",
+  "description": "Yu's various tools",
+  "version": "0.0.1",
+  "publisher": "mexyusef",
+  "author": {
+    "name": "Yusef Ulum"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mexyusef/yutools"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "browser": "./dist/ui/index.js",
+  "extensionKind": [
+    "workspace",
+    "ui"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "fmus",
+        "aliases": [
+          "FMUS",
+          "fmus"
+        ],
+        "extensions": [
+          ".fmus"
+        ],
+        "configuration": "./language-configuration/fmus.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "FMUS Color Theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/fmus-color-theme.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "fmus",
+        "scopeName": "source.fmus",
+        "path": "./syntaxes/fmus.tmLanguage.json"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "yutools.menu_lengkap",
+        "label": "Lengkap",
+        "icon": "$(globe)"
+      },
+      {
+        "id": "yutools.directorySubmenus",
+        "label": "1. Dir operations"
+      },
+      {
+        "id": "yutools.projectSubmenus",
+        "label": "2. Create Project"
+      },
+      {
+        "id": "yutools.projectSubmenus2",
+        "label": "3. Create Project #2"
+      },
+      {
+        "id": "yutools.projectSubmenus3",
+        "label": "4. Create Project #3"
+      },
+      {
+        "id": "yutools.projectSubmenus4",
+        "label": "5. Create Project #4"
+      },
+      {
+        "id": "yutools.projectSubmenus5",
+        "label": "6. Create Project #5"
+      },
+      {
+        "id": "yutools.fileSubmenus",
+        "label": "3. File operations"
+      },
+      {
+        "id": "yutools.editorContextSearches",
+        "label": "4. Searches",
+        "icon": "$(browser)"
+      },
+      {
+        "id": "yutools.editorContextFiles",
+        "label": "5. Files"
+      },
+      {
+        "id": "yutools.editorContextWidgets",
+        "label": "6. Widgets",
+        "icon": "$(squirrel)"
+      },
+      {
+        "id": "yutools.yutools_editor_context_group1",
+        "label": "📝Yutools LLM",
+        "icon": "$(type-hierarchy-sub)"
+      },
+      {
+        "id": "yutools.yutools_editor_context_group2",
+        "label": "📝Yutools Misc",
+        "icon": "$(versions)"
+      },
+      {
+        "id": "yutools.yubantu_editor_context",
+        "label": "📝Yubantu",
+        "icon": "$(lightbulb-sparkle)"
+      },
+      {
+        "id": "yutools.yubantu_editor_title",
+        "label": "🖊️Yubantu",
+        "icon": "$(lightbulb-sparkle)"
+      },
+      {
+        "id": "yutools.yubantu_explorer_context",
+        "label": "📂Yubantu",
+        "icon": "$(lightbulb-sparkle)"
+      },
+      {
+        "id": "yutools.yutools_editor_title",
+        "label": "🖊️Yutools",
+        "icon": "$(beaker)"
+      }
+    ],
+    "menus": {
+      "accounts": [
+        {
+          "command": "yutools.terminal_command_serve_llm",
+          "group": "navigation@1"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "yutools.glassit_increase",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.glassit_minimize",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.glassit_decrease",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.togglePrimarySidebar",
+          "group": "navigation@1"
+        },
+        {
+          "command": "yutools.register_terminal_at_cwd",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.menu_lengkap",
+          "group": "navigation@1"
+        },
+        {
+          "command": "yutools.terminal_command_serve_llm",
+          "group": "navigation@1",
+          "when": "view == yutools.main_webview"
+        }
+      ],
+      "yutools.menu_lengkap": [
+        {
+          "submenu": "yutools.editorContextSearches",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.editorContextWidgets",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.yutools_editor_context_group2",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.yutools_editor_context_group1",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.yubantu_explorer_context",
+          "group": "navigation@2"
+        },
+        {
+          "submenu": "yutools.yubantu_editor_context",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.visitChromeURL",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.visitFirefoxURL",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.cmd.runDynamicCommand",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openTerminalInBookmarkedFolder",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openVSCodeInBookmarkedFolder",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.openTerminalInFileDirectory",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.register_terminal_at_cwd",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.killAllTerminals",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.llm.settings.changeSettings3",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowLLMRawQuery",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowLLMCodeQuery",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowLLMStreamingQuery",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowFmusVscodeCommands",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowFmusVscodeProjectWork",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowInputBoxForPrompt",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.llm.tools.aider.runAider",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.llm.tools.aider.runAiderWithApiBase",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.llm.tools.aider.sendCommandToTerminal",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.comments.removeAllCommentsInActiveFileOmitLines",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.comments.removeAllCommentsInActiveFile",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.comments.listCommentsInActiveFile",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.browser_profile_buttons",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.palette_query.openCommandPaletteWithSearch",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.palette_query.openSettingsWithSearch",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.errors.applyAllQuickFixes",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.errors.fixUndefinedSymbol",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.editors.toggleRightEditorGroup",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.editors.showOpenedEditors",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.diff.applyClipboardDiff",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.llm.huggingface.generateImage",
+          "group": "navigation@4"
+        },
+        {
+          "command": "yutools.terminal_command_serve_llm",
+          "group": "navigation@5"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "yutools.directorySubmenus",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.projectSubmenus",
+          "group": "navigation@2"
+        },
+        {
+          "submenu": "yutools.projectSubmenus2",
+          "group": "navigation@3"
+        },
+        {
+          "submenu": "yutools.projectSubmenus3",
+          "group": "navigation@3"
+        },
+        {
+          "submenu": "yutools.projectSubmenus4",
+          "group": "navigation@3"
+        },
+        {
+          "submenu": "yutools.projectSubmenus5",
+          "group": "navigation@3"
+        },
+        {
+          "submenu": "yutools.fileSubmenus",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.yubantu_explorer_context",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.jsonUtilsModifyJson",
+          "when": "resourceFilename =~ /.*\\.json$/",
+          "group": "navigation"
+        }
+      ],
+      "yutools.editorContextSearches": [
+        {
+          "command": "yutools.searchGoogle",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.searchYouTube",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.searchGitHub",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.searchStackOverflow",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.visitChromeURL",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.visitFirefoxURL",
+          "group": "Yutools"
+        }
+      ],
+      "yutools.editorContextFiles": [
+        {
+          "command": "yutools.editor_selection_to_file",
+          "group": "Yutools",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "yutools.selectedContent2Fmus",
+          "group": "Yutools",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "yutools.selectedContent2LocalLLM",
+          "group": "Yutools",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "yutools.currentLine2Fmus",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.currentLine2LocalLLM",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.editorContent2Fmus",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.editorContent2LocalLLM",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.editor_copy_selection_file_to_cwd",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.editor_rename_active_file",
+          "group": "Yutools",
+          "when": "editorTextFocus && resourceScheme != 'untitled'"
+        },
+        {
+          "command": "yutools.editor_delete_active_file",
+          "group": "Yutools",
+          "when": "editorTextFocus && resourceScheme != 'untitled'"
+        }
+      ],
+      "yutools.editorContextWidgets": [
+        {
+          "command": "yutools.yuwidgets_widget1",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.yuwidgets_widget2",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.yuwidgets_widget3",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.yuwidgets_widget4",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.yuwidgets_widget5",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.yuwidgets_widget6",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.browser_profile_buttons",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.yutools_editor_context",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.glassit_toggleAlpha100",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.toggleMaximizedPanel",
+          "group": "Yutools"
+        },
+        {
+          "command": "yutools.selectAndActivateTerminal",
+          "group": "navigation@8"
+        },
+        {
+          "command": "yutools.showOpenedEditors",
+          "group": "navigation@8"
+        },
+        {
+          "command": "yutools.closeAllButActiveEditor",
+          "group": "navigation@8"
+        },
+        {
+          "command": "yutools.closeAllEditors",
+          "group": "navigation@8"
+        },
+        {
+          "command": "yutools.openFolderWrapper",
+          "group": "_yutools"
+        },
+        {
+          "command": "yutools.openFolderInNewWindow",
+          "group": "_yutools"
+        },
+        {
+          "command": "yutools.minimizeWindow",
+          "group": "_yutools"
+        },
+        {
+          "command": "yutools.killAllTerminals",
+          "group": "navigation@9"
+        },
+        {
+          "command": "yutools.listCommands",
+          "group": "navigation@9"
+        },
+        {
+          "command": "yutools.closeVscodeWindow",
+          "group": "navigation@9"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "yutools.createNewTextFile",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openTerminalInBookmarkedFolder",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openVSCodeInBookmarkedFolder",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.selectFilesForBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.removeFromBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.addToBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.viewBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.addToBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.viewBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.addFolderToBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.viewFolderBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.removeFolderFromBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.addFolderToBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.viewFolderBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.addFileToBookmarkUsingDialog",
+          "group": "navigation"
+        },
+        {
+          "command": "yutools.bookmarks.redis.addFolderToBookmarkUsingDialog",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "yutools.terminal_command_serve_llm",
+          "group": "navigation@4"
+        },
+        {
+          "submenu": "yutools.yubantu_editor_title",
+          "group": "navigation@3"
+        },
+        {
+          "submenu": "yutools.yutools_editor_title",
+          "group": "navigation@5"
+        },
+        {
+          "command": "yutools.glassit_increase",
+          "group": "navigation@6"
+        },
+        {
+          "command": "yutools.glassit_decrease",
+          "group": "navigation@7"
+        },
+        {
+          "command": "yutools.glassit_minimize",
+          "group": "navigation@6"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "yutools.openFolderWrapper",
+          "when": "workbenchState == empty"
+        }
+      ],
+      "editor/context": [
+        { "submenu": "yutools.editorContextFiles", "group": "navigation@1" },
+        { "submenu": "yutools.editorContextSearches", "group": "navigation@2" },
+        { "submenu": "yutools.editorContextWidgets", "group": "navigation@3" },
+        { "submenu": "yutools.yutools_editor_context_group2", "group": "_yutools@terminal@3" },
+        { "submenu": "yutools.yutools_editor_context_group1", "group": "navigation@3" },
+        { "submenu": "yutools.yubantu_editor_context", "group": "navigation@3" },
+
+        {
+          "command": "yutools.editor_fold_all",
+          "group": "_yutools@aaa"
+        },
+        {
+          "command": "yutools.openMarkdownPreview",
+          "group": "_yutools@3",
+          "when": "resourceLangId == markdown"
+        },
+        {
+          "command": "yutools.toggleZenMode",
+          "group": "_yutools@2"
+        },
+        {
+          "command": "yutools.glassit_toggleAlpha20_80",
+          "group": "_yutools@3"
+        },
+        {
+          "command": "yutools.togglePrimarySidebar",
+          "group": "_yutools@3"
+        },
+        {
+          "command": "yutools.openTerminalInFileDirectory",
+          "group": "_yutools@terminal@1",
+          "when": "editorTextFocus && activeEditor && !isUntitled"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openTerminalInBookmarkedFolder",
+          "group": "_yutools@terminal@2"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openVSCodeInBookmarkedFolder",
+          "group": "_yutools@terminal@2"
+        },
+        {
+          "command": "yutools.togglePanelVisibility",
+          "group": "_yutools@terminal@3"
+        },
+
+        {
+          "command": "yutools.files.createNewFileFromContext",
+          "group": "_yutools@3",
+          "when": "editorTextFocus && activeEditor && !isUntitled"
+        },
+        {
+          "command": "yutools.editors.new_editor_beside",
+          "group": "_yutools@3",
+          "when": "editorTextFocus && activeEditor"
+        },
+
+        { "command": "yutools.bookmarks.redis.viewBookmark", "group": "_yutools@bbb" },
+        { "command": "yutools.bookmarks.redis.addToBookmark", "group": "_yutools@bbb" },
+        { "command": "yutools.bookmarks.redis.addFileToBookmarkUsingDialog", "group": "_yutools@bbb" },
+
+        {
+          "command": "yutools.bookmarks.redis.viewFolderBookmark",
+          "group": "navigation@2@redis_bookmark_folder@1"
+        },
+        {
+          "command": "yutools.bookmarks.redis.addFolderToBookmark",
+          "group": "navigation@2@redis_bookmark_folder@2"
+        },
+        {
+          "command": "yutools.bookmarks.redis.removeFolderFromBookmark",
+          "group": "navigation@2@redis_bookmark_folder@2"
+        },
+        {
+          "command": "yutools.bookmarks.redis.addFolderToBookmarkUsingDialog",
+          "group": "navigation@2@redis_bookmark_folder@2"
+        }
+      ],
+      "terminal/title/context": [
+        {
+          "command": "yutools.bookmarks.redis.openTerminalInBookmarkedFolder",
+          "group": "_yutools@1"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openVSCodeInBookmarkedFolder",
+          "group": "_yutools@1"
+        },
+        {
+          "command": "yutools.killAllTerminals",
+          "group": "_yutools@1"
+        }
+      ],
+      "terminal/title": [
+        {
+          "command": "yutools.cmd.runDynamicCommand",
+          "group": "_yutools@1"
+        }
+      ],
+      "terminal/context": [
+        {
+          "command": "yutools.terminal.pasteClipboard",
+          "group": "_yutools@1"
+        },
+        {
+          "command": "yutools.terminal.gitStatus",
+          "group": "_yutools@2"
+        },
+        {
+          "command": "yutools.terminal.gitAddAll",
+          "group": "_yutools@2"
+        },
+        {
+          "command": "yutools.terminal.gitCommit",
+          "group": "_yutools@3"
+        },
+        {
+          "command": "yutools.terminal.gitLog",
+          "group": "_yutools@4"
+        },
+        {
+          "command": "yutools.terminal.gitDiff",
+          "group": "_yutools@4"
+        },
+        {
+          "command": "yutools.cmd.runDynamicCommand",
+          "group": "_yutools@8"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openTerminalAndRunCommand",
+          "group": "_yutools@8"
+        },
+        {
+          "command": "yutools.terminal.gitAdd",
+          "group": "_yutools@9"
+        },
+        {
+          "command": "yutools.terminal.showMessage",
+          "group": "_yutools@9"
+        }
+      ],
+      "yutools.fileSubmenus": [
+        {
+          "command": "yutools.yutools_file_context_open_terminal_for_file",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        },
+        {
+          "command": "yutools.yutools_file_context_git_init",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        },
+        {
+          "command": "yutools.yutools_file_context_git_pull",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        },
+        {
+          "command": "yutools.yutools_file_context_run_fmus",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        },
+        {
+          "command": "yutools.yutools_file_context_set_cwd_to_here",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        },
+        {
+          "command": "yutools.yutools_file_context_file_bantuan",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        },
+        {
+          "command": "yutools.files.createNewFileFromContext",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        },
+        {
+          "command": "yutools.files.copyFileFromContext",
+          "when": "!explorerResourceIsFolder",
+          "group": "File operations"
+        }
+      ],
+      "yutools.projectSubmenus": [
+        {
+          "command": "yutools.dir_context_react_webpack_create",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_react_vite_create",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_react_vite_create2",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_nest_create",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_create_spring_boot",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_create_react_native1",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_create_flutter1",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_create_node_express",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_rust_axum",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_scala_play",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_create_go_echo",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_nextjs_shadcn_create",
+          "group": "Create Project",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_android_kotlin",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_angular",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_apache_airflow",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_asp_net_core",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_astro",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_bot_discord",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_bot_telegram",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_bot_slack",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_clojure_compojure",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_clojure_luminus",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_cloud_aws",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_cloud_azure",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_cloud_gcp",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_cpp_library",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_dapp",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_deno",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "yutools.projectSubmenus2": [
+        {
+          "command": "yutools.register_dir_context_create_desktop_electron",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_desktop_javafx",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_desktop_pyqt6",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_desktop_scalafx",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_desktop_tkinter",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_django",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_devops_docker",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_devops_kubernetes",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_devops_terraform",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_extension_chrome",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_extension_firefox",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_extension_vscode",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_fastapi",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_flask",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_go_cli",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_go_fasthttp",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_go_beego",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_go_fiber",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_go_gin",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_go_gorilla",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_haskell_library",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_java_dropwizard",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_java_jakartaee",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_java_micronaut",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_java_quarkus",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_java_selenium",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_java_vaadin",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_java_vertx",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_kafka_go",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "yutools.projectSubmenus3": [
+        {
+          "command": "yutools.register_dir_context_create_kafka_python",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_kafka_java",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_kafka_scala",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_laravel",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_mqtt_python",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_mqtt_go",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_mqtt_java",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_nextjs_material",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_node_fastify",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_npm_package",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_openapi_swagger",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_phoenix",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_protobuf_grpc",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_python_asyncio_celery",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_python_package",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "yutools.projectSubmenus4": [
+        {
+          "command": "yutools.register_dir_context_create_python_pandas",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_python_pytorch",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_python_selenium",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_python_tensorflow",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_ruby_on_rails",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_react_cra",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_remix",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_ruby_library",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_rust_actix",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_rust_rocket",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_rust_tokio",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scala_akka",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scala_cats",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scala_spark",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scala_zio",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "yutools.projectSubmenus5": [
+        {
+          "command": "yutools.register_dir_context_create_scraping_bs4",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scraping_cheerio",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scraping_colly",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scraping_goquery",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scraping_jsoup",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scraping_playwright",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scraping_puppeteer",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_scraping_scrapy",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_svelte",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_tauri",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_vue_vite",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_web3",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_webrtc",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_websocket_mobile",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.register_dir_context_create_websocket_web",
+          "group": "Create Project #2",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "yutools.yubantu_editor_context": [
+        {
+          "command": "aide.smartPaste",
+          "group": "0_aide@101"
+        },
+        {
+          "command": "aide.renameVariable",
+          "group": "0_aide@102"
+        },
+        {
+          "command": "aide.codeViewerHelper",
+          "group": "0_aide@120"
+        },
+        {
+          "command": "aide.codeConvert",
+          "group": "0_aide@121"
+        },
+        {
+          "command": "aide.expertCodeEnhancer",
+          "group": "0_aide@122"
+        }
+      ],
+      "yutools.yubantu_editor_title": [
+        {
+          "command": "aide.codeViewerHelper",
+          "group": "navigation@1"
+        },
+        {
+          "command": "aide.codeConvert",
+          "group": "navigation@2"
+        },
+        {
+          "command": "aide.expertCodeEnhancer",
+          "group": "navigation@3"
+        }
+      ],
+      "yutools.yubantu_explorer_context": [
+        {
+          "when": "explorerResourceIsFolder || selectedFilesCount > 0 || resourceLangId",
+          "command": "aide.copyAsPrompt",
+          "group": "0_aide@0"
+        },
+        {
+          "when": "explorerResourceIsFolder || selectedFilesCount > 0 || resourceLangId",
+          "command": "aide.askAI",
+          "group": "0_aide@1"
+        },
+        {
+          "when": "explorerResourceIsFolder || selectedFilesCount > 0 || resourceLangId",
+          "command": "aide.batchProcessor",
+          "group": "0_aide@2"
+        }
+      ],
+      "yutools.yutools_editor_title": [
+        {
+          "command": "yutools.toggleShowPrimaryCommands",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowSecondaryCommands",
+          "group": "navigation@3"
+        },
+        {
+          "command": "yutools.toggleShowLLMRawQuery",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.toggleShowLLMCodeQuery",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.toggleShowLLMFmusQuery",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.toggleShowLLMMultimodalQuery",
+          "group": "navigation@2"
+        },
+        {
+          "command": "yutools.toggleShowLLMStreamingQuery",
+          "group": "navigation@2"
+        },
+        {
+          "submenu": "yutools.menu_lengkap",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.yutools_editor_context_group1",
+          "group": "navigation@1"
+        },
+        {
+          "submenu": "yutools.yutools_editor_context_group2",
+          "group": "navigation@1"
+        },
+        {
+          "command": "yutools.llm.settings.changeSettings3",
+          "group": "navigation@9"
+        }
+      ],
+      "yutools.yutools_editor_context_group1": [
+        {
+          "command": "yutools.llm.cerebras.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.cohere.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.geminiv2.geminiStreamCollected",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.glhf.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.groq.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.hyperbolic.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.openai.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.sambanova.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.together.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.xai.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.huggingface.sendPrompt",
+          "group": "_yutools1"
+        },
+        {
+          "command": "yutools.llm.settings.changeSettings2",
+          "group": "_yutools2"
+        },
+        {
+          "command": "yutools.multimodal.gemini.generateFromFileDialog",
+          "group": "_yutools3"
+        },
+        {
+          "command": "yutools.multimodal.gemini.generateFromClipboard",
+          "group": "_yutools3"
+        },
+        {
+          "command": "yutools.multimodal.together.setDefaultSettings",
+          "group": "_yutools3"
+        },
+        {
+          "command": "yutools.multimodal.together.generateImage",
+          "group": "_yutools3"
+        },
+        {
+          "command": "yutools.multimodal.together.uploadImage",
+          "group": "_yutools3"
+        },
+        {
+          "command": "yutools.multimodal.together.describeImageUrl",
+          "group": "_yutools3"
+        },
+        {
+          "command": "yutools.multimodal.together.describeLocalImage",
+          "group": "_yutools3"
+        },
+        {
+          "command": "yutools.toggleShowLLMRawQuery",
+          "group": "_yutools@9@codelens"
+        },
+        {
+          "command": "yutools.toggleShowLLMCodeQuery",
+          "group": "_yutools@9@codelens"
+        },
+        {
+          "command": "yutools.toggleShowLLMStreamingQuery",
+          "group": "_yutools@9@codelens"
+        },
+        {
+          "command": "yutools.toggleShowLLMFmusQuery",
+          "title": "_yutools@9@codelens"
+        },
+        {
+          "command": "yutools.toggleShowLLMMultimodalQuery",
+          "title": "_yutools@9@codelens"
+        },
+        {
+          "command": "yutools.errors.joinErrors",
+          "group": "_yutools@18"
+        },
+        {
+          "command": "yutools.errors.joinErrorsWithCodeLLMFormat",
+          "group": "_yutools@18"
+        },
+        {
+          "command": "yutools.errors.joinErrorsWithNumberingAndFileContent",
+          "group": "_yutools@18"
+        },
+        {
+          "command": "yutools.errors.filterDiagnostics",
+          "group": "_yutools@19"
+        },
+        {
+          "command": "yutools.errors.toggleProblems",
+          "group": "_yutools@19"
+        },
+        {
+          "command": "yutools.errors.listErrorsAndWarnings",
+          "group": "_yutools@20"
+        },
+        {
+          "command": "yutools.errors.joinWarnings",
+          "group": "_yutools@21"
+        },
+        {
+          "submenu": "yutools.yutools_editor_context_group2",
+          "group": "_yutools99"
+        },
+        {
+          "command": "yutools.geminiv2.geminiStream",
+          "group": "_yutools99"
+        }
+      ],
+      "yutools.yutools_editor_context_group2": [
+        {
+          "command": "yutools.fmus.processFolder",
+          "group": "_group@01"
+        },
+        {
+          "command": "yutools.fmus.addEntry",
+          "group": "_group@02"
+        },
+        {
+          "command": "yutools.fmus.processFolderForFMUSTree",
+          "group": "_group@03"
+        },
+        {
+          "command": "yutools.cmd.runDynamicCommand",
+          "group": "_group@04"
+        },
+        {
+          "command": "yutools.bookmarks.redis.openTerminalAndRunCommand",
+          "group": "_group@04"
+        },
+        {
+          "command": "yutools.errors.joinErrors",
+          "group": "errors@18"
+        },
+        {
+          "command": "yutools.errors.joinErrorsWithCodeLLMFormat",
+          "group": "errors@18"
+        },
+        {
+          "command": "yutools.errors.joinErrorsWithNumberingAndFileContent",
+          "group": "errors@18"
+        },
+        {
+          "command": "yutools.visitChromeURL",
+          "group": "browser@1"
+        },
+        {
+          "command": "yutools.visitFirefoxURL",
+          "group": "browser@2"
+        },
+        {
+          "command": "yutools.collapseAllCommand",
+          "group": "explorer@1"
+        },
+        {
+          "command": "yutools.searchAndRevealFileInExplorer",
+          "group": "explorer@2"
+        },
+        {
+          "command": "yutools.revealFileCommand2",
+          "group": "explorer@3"
+        },
+        {
+          "command": "yutools.viewBookmark",
+          "group": "_yutools@bookmark@old_bookmark"
+        },
+        {
+          "command": "yutools.viewFolderBookmark",
+          "group": "_yutools@bookmark@old_bookmark"
+        },
+        {
+          "command": "yutools.addFolderToBookmark",
+          "group": "_yutools@bookmark@old_bookmark"
+        },
+        {
+          "command": "yutools.addToBookmark",
+          "group": "_yutools@bookmark@old_bookmark"
+        }
+      ],
+      "yutools.directorySubmenus": [
+        {
+          "command": "yutools.gitCommandLoop",
+          "group": "Dir operations"
+        },
+        {
+          "command": "yutools.gitCommandLoopBackground",
+          "group": "Dir operations"
+        },
+        {
+          "command": "yutools.openInWorkspace",
+          "group": "Dir operations"
+        },
+        {
+          "command": "yutools.yutools_explorer_context_directory_git_init",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.yutools_explorer_context_directory_git_pull",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.yutools_explorer_context_directory_bantuan",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.set_current_working_directory_to_dir_selection",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_run_fmus_here",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_run_gitk",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_run_smartgit",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_context_run_git_extension",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_menu_serve_http_python",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_menu_serve_http_node",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.toolsAnalyzeProject",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.toolsProcessPath",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.yutools_explorer_context_directory_create_terminal",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.yutools_explorer_context_directory_create_terminal_maximized",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.search_text_in_folder",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.fileUtilsSearchFiles",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_menu_wsl_rm_rf_content",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_menu_wsl_rm_rf_ensure_wsl",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.dir_menu_wsl_rm_rf",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "yutools.addFolderToBookmarkFromExplorer",
+          "group": "Dir operations",
+          "when": "explorerResourceIsFolder"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "Aide Configuration",
+        "properties": {
+          "aide.openaiKey": {
+            "type": "string",
+            "default": "",
+            "markdownDescription": "OpenAI Key, [click to view online documentation](https://aide.nicepkg.cn/guide/getting-started/how-to-configure-openai-key) or [I Don't Have an OpenAI Key](https://aide.nicepkg.cn/guide/getting-started/how-to-configure-openai-key#i-don-t-have-an-openai-key)"
+          },
+          "aide.openaiModel": {
+            "type": "string",
+            "default": "gpt-4o",
+            "markdownDescription": "OpenAI Model, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/openai-model)"
+          },
+          "aide.openaiBaseUrl": {
+            "type": "string",
+            "default": "https://api.openai.com/v1",
+            "markdownDescription": "OpenAI Base URL, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/openai-base-url)"
+          },
+          "aide.apiConcurrency": {
+            "type": "number",
+            "default": 1,
+            "markdownDescription": "API request concurrency, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/api-concurrency)"
+          },
+          "aide.useSystemProxy": {
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "Use global proxy (`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`), you need to restart `VSCode` to take effect after changing this setting, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/use-system-proxy)"
+          },
+          "aide.codeViewerHelperPrompt": {
+            "type": "string",
+            "editPresentation": "multilineText",
+            "default": "You are a programming language commentator.\nYou need to help me add comments to #{sourceLanguage} code as much as possible to make it readable for beginners.\nDo not change the original code, just add as detailed comments as possible,\nbecause my purpose is only to understand and read. Please use my native language #{locale} as the commenting language.\nPlease do not reply with any text other than the code, and do not use markdown syntax.\nHere is the code you need to comment on:\n\n#{content}",
+            "scope": "resource",
+            "markdownDescription": "Code viewer helper AI prompt template, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/code-viewer-helper-prompt)"
+          },
+          "aide.convertLanguagePairs": {
+            "type": "object",
+            "default": {},
+            "scope": "resource",
+            "markdownDescription": "Default convert language pairs, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/convert-language-pairs)"
+          },
+          "aide.autoRememberConvertLanguagePairs": {
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "Automatically remember convert language pairs, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/auto-remember-convert-language-pairs)"
+          },
+          "aide.expertCodeEnhancerPromptList": {
+            "type": "array",
+            "default": [],
+            "scope": "resource",
+            "markdownDescription": "Expert code enhancer AI prompt template list, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/expert-code-enhancer-prompt-list)"
+          },
+          "aide.readClipboardImage": {
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "Allow reading clipboard images as AI context in certain scenarios, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/read-clipboard-image)"
+          },
+          "aide.aiPrompt": {
+            "type": "string",
+            "editPresentation": "multilineText",
+            "default": "#{content}",
+            "scope": "resource",
+            "markdownDescription": "Template for copied content, use `#{content}` as a variable for file content, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/ai-prompt)"
+          },
+          "aide.ignorePatterns": {
+            "type": "array",
+            "default": [
+              "**/node_modules/**",
+              "**/.git/**",
+              "**/__pycache__/**",
+              "**/.Python/**",
+              "**/.DS_Store/**",
+              "**/.cache/**",
+              "**/.next/**",
+              "**/.nuxt/**",
+              "**/.out/**",
+              "**/dist/**",
+              "**/.serverless/**",
+              "**/.parcel-cache/**"
+            ],
+            "scope": "resource",
+            "markdownDescription": "Ignored file name patterns, supports `glob` syntax, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/ignore-patterns)"
+          },
+          "aide.respectGitIgnore": {
+            "type": "boolean",
+            "default": true,
+            "scope": "resource",
+            "markdownDescription": "Respect `.gitignore` file, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/respect-git-ignore)"
+          },
+          "aide.aiCommand": {
+            "type": "string",
+            "default": "",
+            "scope": "resource",
+            "markdownDescription": "Custom `✨ Aide: Ask AI` command template. Available variables:` #{filesRelativePath}`, `#{filesFullPath}`, `#{content}`, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/ai-command)"
+          },
+          "aide.aiCommandCopyBeforeRun": {
+            "type": "boolean",
+            "default": true,
+            "scope": "resource",
+            "markdownDescription": "Copy AI command to clipboard before `✨ Aide: Ask AI` running, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/ai-command-copy-before-run)"
+          },
+          "aide.aiCommandAutoRun": {
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "Automatically run AI command when clicking `✨ Aide: Ask AI`, [click to view online documentation](https://aide.nicepkg.cn/guide/configuration/ai-command-auto-run)"
+          }
+        }
+      },
+      {
+        "title": "Yutools Settings",
+        "properties": {
+          "yutools.databases.redis.connectionString": {
+            "type": "string",
+            "default": "redis://localhost:6379",
+            "description": "Redis connection string (e.g., redis://user:pass@host:port)"
+          },
+          "yutools.redis_binsar_binsilounruffled946": {
+            "type": "string",
+            "default": "redis://default:pass@subdomain.redis-cloud.com:10357",
+            "description": "Redis connection string (e.g., redis://user:pass@host:port)"
+          },
+          "yutools.redis_tarfahmiz_gmail": {
+            "type": "string",
+            "default": "redis://default:pass@subdomain.redis-cloud.com:14863",
+            "description": "Redis connection string (e.g., redis://user:pass@host:port)"
+          },
+          "yutools.redis_tarfahmiz_simpleloginnewsletterendowment724": {
+            "type": "string",
+            "default": "redis://default:pass@subdomain.redis-cloud.com:19963",
+            "description": "Redis connection string (e.g., redis://user:pass@host:port)"
+          },
+          "yutools.redis_ulumus_gmail": {
+            "type": "string",
+            "default": "redis://default:pass@subdomain.redis-cloud.com:19975",
+            "description": "Redis connection string (e.g., redis://user:pass@host:port)"
+          },
+          "yutools.redis_ulumus_shivering_thrive059": {
+            "type": "string",
+            "default": "redis://default:pass@subdomain.redis-cloud.com:14126",
+            "description": "Redis connection string (e.g., redis://user:pass@host:port)"
+          },
+          "yutools.redis_viraljts_simpleloginnewsletterflagman553": {
+            "type": "string",
+            "default": "redis://default:pass@subdomain.redis-cloud.com:19797",
+            "description": "Redis connection string (e.g., redis://user:pass@host:port)"
+          },
+          "yutools.fmusLLMPrompt": {
+            "type": "string",
+            "default": "C:\\ai\\yuagent\\extensions\\yutools\\src\\pages\\fmus-vscode\\fmus-prompt2.txt",
+            "description": "FMUS Project Prompt."
+          },
+          "yutools.currentWorkingDirectory": {
+            "type": "string",
+            "default": "c:\\hapus",
+            "description": "Current working directory."
+          },
+          "yutools.previews": {
+            "html": {
+              "port": 8240,
+              "rootdir": "C:\\ai\\fulled-templates\\html"
+            }
+          },
+          "yutools.currentBantuanWorkingDirectory": {
+            "type": "string",
+            "default": "c:\\hapus",
+            "description": "Current working directory."
+          },
+          "yutools.currentKerjaWorkingDirectory": {
+            "type": "string",
+            "default": "c:\\ai\\fulled-work",
+            "description": "Current working directory."
+          },
+          "yutools.helpFilePath": {
+            "type": "string",
+            "default": "C:\\ai\\fulled\\extensions\\fulled\\src\\docs\\BANTUAN.md",
+            "description": "Path to the help file."
+          },
+          "yutools.loggingLevel": {
+            "type": "string",
+            "default": "info",
+            "description": "Set logging level (debug | info | warn | error)"
+          },
+          "yutools.hiddenPromptPrefix": {
+            "type": "string",
+            "default": "Please edit the code following these instructions.\nIf user ask to generate code, then generate code without explaining.\nNever put markdown code marks of triple ticks.\n---\n",
+            "description": "Hidden prompt prefix"
+          },
+          "yutools.hiddenPromptSuffix": {
+            "type": "string",
+            "default": "\n---\nIf you make a change, rewrite the entire file.",
+            "description": "Hidden prompt suffix"
+          },
+          "yutools.prefixPresets": {
+            "type": "object",
+            "default": {
+              "Translate to French": "Translate the following text into French:",
+              "Summarize": "Summarize the following text in 3 bullet points:",
+              "Rewrite Professionally": "Rewrite the following text in a professional tone:"
+            },
+            "description": "Preset prefixes for LLM prompts."
+          },
+          "yutools.suffixPresets": {
+            "type": "object",
+            "default": {
+              "Add Conclusion": "Provide a conclusion for the above text.",
+              "Add Examples": "Include relevant examples to support the above text."
+            },
+            "description": "Preset suffixes for LLM prompts."
+          },
+          "yutools.replacementPresets": {
+            "type": "object",
+            "default": {
+              "Fill in the Blank": "__REPLACE_ME_HERE__",
+              "Insert Code Here": "__INSERT_CODE_HERE__"
+            },
+            "description": "Preset placeholders for replacement in LLM prompts."
+          },
+          "yutools.currentPromptPrefix": {
+            "type": "string",
+            "default": "",
+            "description": "currentPromptPrefix"
+          },
+          "yutools.currentPromptSuffix": {
+            "type": "string",
+            "default": "",
+            "description": "currentPromptSuffix"
+          },
+          "yutools.currentPromptReplacement": {
+            "type": "string",
+            "default": "",
+            "description": "currentPromptReplacement"
+          },
+          "yutools.showPrimaryCommands": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show primary commands at the top of the document"
+          },
+          "yutools.showSecondaryCommands": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show secondary commands at active line"
+          },
+          "yutools.showLLMRawQuery": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show LLM provider for raw query"
+          },
+          "yutools.showLLMCodeQuery": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show LLM provider for code query"
+          },
+          "yutools.showLLMFmusQuery": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show LLM provider for FMUS query"
+          },
+          "yutools.showLLMMultimodalQuery": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show LLM provider for Multimodal query including vision, image generation, vision/doc QA"
+          },
+          "yutools.showLLMStreamingQuery": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show LLM streaming to editor"
+          },
+          "yutools.showFmusVscodeProjectWork": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show commands from legacy fmus-code extension projects and works"
+          },
+          "yutools.showFmusVscodeCommands": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show commands from legacy fmus-code extension misc"
+          },
+          "yutools.showInputBoxForPrompt": {
+            "type": "boolean",
+            "default": false,
+            "description": "LLM Query from user input rather than from editor"
+          },
+          "yutools.showLLMResponseBeside": {
+            "type": "boolean",
+            "default": false,
+            "description": "Showing LLM Response beside or on editor"
+          },
+          "yutools.glassit_alpha": {
+            "type": "integer",
+            "default": 220,
+            "description": "Transparency level [1-255]"
+          },
+          "yutools.glassit_step": {
+            "type": "integer",
+            "default": 5,
+            "description": "Increment of alpha"
+          },
+          "yutools.glassit_force_sway": {
+            "type": "boolean",
+            "default": false,
+            "description": "Force using swaymsg to set transparency"
+          }
+        }
+      }
+    ],
+    "viewsContainers": {
+      "panel": [
+        {
+          "id": "notebox",
+          "title": "YuNotes",
+          "icon": "$(note)"
+        }
+      ],
+      "activitybar": [
+        {
+          "id": "a___yutoolsViewContainer",
+          "title": "Cinta",
+          "icon": "$(circuit-board)"
+        }
+      ]
+    },
+    "views": {
+      "notebox": [
+        {
+          "type": "webview",
+          "id": "notebox.noteboxView",
+          "name": "notebox"
+        }
+      ],
+      "explorer": [
+        {
+          "id": "fileTreeViewExplorer",
+          "name": "Yutools Explorer"
+        }
+      ],
+      "a___yutoolsViewContainer": [
+        {
+          "type": "webview",
+          "id": "yutools.main_webview",
+          "name": "Fulgent"
+        }
+      ]
+    },
+    "commands": [
+      { "command": "yutools.tools.ecode.openFolderWithEcode", "title": "📂Ecode folder" },
+      { "command": "yutools.tools.ecode.openFileWithEcode", "title": "📄Ecode file" },
+      { "command": "yutools.git.gitCommitWithLLM", "title": "Git commit dengan LLM" },
+
+      { "command": "yutools.llm.chats.glhf.chat", "title": "GLHF chats - chat" },
+      { "command": "yutools.llm.chats.glhf.uploadFile", "title": "GLHF chats - uploadFile" },
+      { "command": "yutools.llm.chats.glhf.getHistory", "title": "GLHF chats - getHistory" },
+      { "command": "yutools.llm.chats.glhf.getFiles", "title": "GLHF chats - getFiles" },
+      { "command": "yutools.llm.chats.glhf.switchConversation", "title": "GLHF chats - switch conversation" },
+
+      { "command": "yutools.settings.switchPreset", "title": "Settings - Switch Presets" },
+      { "command": "yutools.settings.resetPreset", "title": "Settings - Reset Presets" },
+      { "command": "yutools.settings.showPresets", "title": "Settings - Show Presets" },
+      { "command": "yutools.llm.glhf.sendPromptWithPresets", "title": "GLHF LLM with Presets" },
+      { "command": "yutools.settings.addPreset", "title": "Settings - Add Presets" },
+      { "command": "yutools.settings.editPreset", "title": "Settings - Edit Presets" },
+      { "command": "yutools.settings.deletePreset", "title": "Settings - Delete Presets" },
+      {
+        "command": "yutools.work.applyUpworkCommand",
+        "title": "💼Apply upwork"
+      },
+      {
+        "command": "yutools.work.applyRemoteWork",
+        "title": "💼Apply remote work"
+      },
+      {
+        "command": "yutools.work.resumeRemoteWork",
+        "title": "💼Resume for remote work"
+      },
+      {
+        "command": "yutools.work.summarizeYoutubeVideoCommandNew",
+        "title": "Summarize youtube"
+      },
+      {
+        "command": "yutools.work.performResearch",
+        "title": "Perform research"
+      },
+      {
+        "command": "yutools.projects.fmusFormatCommand",
+        "title": "Prompt => FMUS"
+      },
+      {
+        "command": "yutools.projects.createProject",
+        "title": "Prompt => Project"
+      },
+      {
+        "command": "yutools.toggleShowFmusVscodeProjectWork",
+        "title": "💼Toggle remote work/project"
+      },
+      {
+        "command": "yutools.toggleShowFmusVscodeCommands",
+        "title": "💼Toggle fmus"
+      },
+      {
+        "command": "yutools.fmus-vscode.createMemorableStory",
+        "title": "FV: createMemorableStory"
+      },
+      {
+        "command": "yutools.fmus-vscode.createProjectSkeleton",
+        "title": "FV: createProjectSkeleton"
+      },
+      {
+        "command": "yutools.fmus-vscode.fixEnglishGrammar",
+        "title": "FV: fixEnglishGrammar"
+      },
+      {
+        "command": "yutools.fmus-vscode.generateBook",
+        "title": "FV: generateBook"
+      },
+      {
+        "command": "yutools.fmus-vscode.generateBlogPost",
+        "title": "FV: generateBlogPost"
+      },
+      {
+        "command": "yutools.fmus-vscode.generateCodeFromFuzzyPrompt",
+        "title": "FV: generateCodeFromFuzzyPrompt"
+      },
+      {
+        "command": "yutools.fmus-vscode.generateTechnicalArticle",
+        "title": "FV: generateTechnicalArticle"
+      },
+      {
+        "command": "yutools.fmus-vscode.podomoro_planner",
+        "title": "FV: podomoro_planner"
+      },
+      {
+        "command": "yutools.fmus-vscode.ragCurrentFolder",
+        "title": "FV: ragCurrentFolder"
+      },
+      {
+        "command": "yutools.fmus-vscode.refactorCodeWithExplanation",
+        "title": "FV: refactorCodeWithExplanation"
+      },
+      {
+        "command": "yutools.fmus-vscode.researchWithTools",
+        "title": "FV: researchWithTools"
+      },
+      {
+        "command": "yutools.fmus-vscode.researchRole",
+        "title": "FV: researchRole"
+      },
+      {
+        "command": "yutools.fmus-vscode.summarizeWebPage",
+        "title": "FV: summarizeWebPage"
+      },
+      {
+        "command": "yutools.fmus-vscode.summarizeYoutubeVideo",
+        "title": "FV: summarizeYoutubeVideo"
+      },
+      {
+        "command": "yutools.yutools_explorer_context_directory_create_terminal",
+        "title": "01. Terminal"
+      },
+      {
+        "command": "yutools.set_current_working_directory_to_dir_selection",
+        "title": "02. Set to CWD"
+      },
+      {
+        "command": "yutools.yutools_explorer_context_directory_bantuan",
+        "title": "03. Bantuan"
+      },
+      {
+        "command": "yutools.dir_context_run_fmus_here",
+        "title": "04. Run FMUS"
+      },
+      {
+        "command": "yutools.yutools_explorer_context_directory_git_init",
+        "title": "Git init"
+      },
+      {
+        "command": "yutools.yutools_explorer_context_directory_git_pull",
+        "title": "Git pull"
+      },
+      {
+        "command": "yutools.yutools_explorer_context_directory_create_terminal_maximized",
+        "title": "06. Terminal Max"
+      },
+      {
+        "command": "yutools.dir_context_run_gitk",
+        "title": "07. Gitk"
+      },
+      {
+        "command": "yutools.dir_context_run_git_extension",
+        "title": "08. GitExt"
+      },
+      {
+        "command": "yutools.dir_context_run_smartgit",
+        "title": "09. SmartGit"
+      },
+      {
+        "command": "yutools.search_text_in_folder",
+        "title": "🔎Search text in selected folder"
+      },
+      {
+        "command": "yutools.dir_menu_serve_http_python",
+        "title": "11. python -m http.server"
+      },
+      {
+        "command": "yutools.dir_menu_serve_http_node",
+        "title": "12. npx http-server"
+      },
+      {
+        "command": "yutools.toolsAnalyzeProject",
+        "title": "13. Tools: analyze project"
+      },
+      {
+        "command": "yutools.toolsProcessPath",
+        "title": "14. Tools: Files2Prompt"
+      },
+      {
+        "command": "yutools.gitCommandLoop",
+        "title": "gitCommandLoop"
+      },
+      {
+        "command": "yutools.gitCommandLoopBackground",
+        "title": "gitCommandLoopBackground"
+      },
+      {
+        "command": "yutools.openInWorkspace",
+        "title": "Open in new Vscode"
+      },
+      {
+        "command": "yutools.yutools_file_context_open_terminal_for_file",
+        "title": "1. Terminal for File"
+      },
+      {
+        "command": "yutools.yutools_file_context_git_init",
+        "title": "Git init here"
+      },
+      {
+        "command": "yutools.yutools_file_context_git_pull",
+        "title": "Git pull here"
+      },
+      {
+        "command": "yutools.yutools_file_context_set_cwd_to_here",
+        "title": "3. Set CWD"
+      },
+      {
+        "command": "yutools.yutools_file_context_run_fmus",
+        "title": "4. Run FMUS"
+      },
+      {
+        "command": "yutools.yutools_file_context_file_bantuan",
+        "title": "5. Aider for File"
+      },
+      {
+        "command": "yutools.searchGoogle",
+        "title": "1. Google"
+      },
+      {
+        "command": "yutools.searchYouTube",
+        "title": "2. Youtube"
+      },
+      {
+        "command": "yutools.searchGitHub",
+        "title": "3. Github"
+      },
+      {
+        "command": "yutools.searchStackOverflow",
+        "title": "4. Stack"
+      },
+      {
+        "command": "yutools.editor_selection_to_file",
+        "title": "Save selection to file",
+        "icon": "$(checklist)"
+      },
+      {
+        "command": "yutools.selectedContent2LocalLLM",
+        "title": "selectedContent2LocalLLM"
+      },
+      {
+        "command": "yutools.selectedContent2Fmus",
+        "title": "selectedContent2Fmus"
+      },
+      {
+        "command": "yutools.currentLine2Fmus",
+        "title": "currentLine2Fmus"
+      },
+      {
+        "command": "yutools.currentLine2LocalLLM",
+        "title": "currentLine2LocalLLM"
+      },
+      {
+        "command": "yutools.editorContent2LocalLLM",
+        "title": "editorContent2LocalLLM"
+      },
+      {
+        "command": "yutools.editorContent2Fmus",
+        "title": "editorContent2Fmus"
+      },
+      {
+        "command": "yutools.editor_copy_selection_file_to_cwd",
+        "title": "Copy file in active editor to cwd"
+      },
+      {
+        "command": "yutools.editor_rename_active_file",
+        "title": "Rename current file in active editor"
+      },
+      {
+        "command": "yutools.editor_delete_active_file",
+        "title": "Delete current file in active editor"
+      },
+      {
+        "command": "yutools.yutools_editor_context",
+        "title": "Yu: Info active editor"
+      },
+      {
+        "command": "yutools.editor_fold_all",
+        "title": "🗂️Fold all"
+      },
+      {
+        "command": "yutools.openMarkdownPreview",
+        "title": "👀Preview markdown"
+      },
+      {
+        "command": "yutools.openFolderInNewWindow",
+        "title": "🆕Open folder in new window"
+      },
+      {
+        "command": "yutools.openFolderWrapper",
+        "title": "🔄Open folder in same window"
+      },
+      {
+        "command": "yutools.minimizeWindow",
+        "title": "⬇️Minimize window",
+        "icon": "$(chrome-minimize)"
+      },
+      {
+        "command": "yutools.toggleZenMode",
+        "title": "🎧Zen"
+      },
+      {
+        "command": "yutools.openTerminalInFileDirectory",
+        "title": "💻Terminal @Active File"
+      },
+      {
+        "command": "yutools.toggleMaximizedPanel",
+        "title": "⬜Max panel"
+      },
+      {
+        "command": "yutools.togglePanelVisibility",
+        "title": "👁️Visibility panel"
+      },
+      {
+        "command": "yutools.glassit_toggleAlpha20_80",
+        "title": "🌀Alpha 20-80"
+      },
+      {
+        "command": "yutools.glassit_toggleAlpha100",
+        "title": "⚪Alpha 100"
+      },
+      {
+        "command": "yutools.editor_insert_text_at_cursor",
+        "title": "✏️Insert text at cursor"
+      },
+      {
+        "command": "yutools.register_terminal_at_cwd",
+        "title": "Terminal @CWD",
+        "icon": "$(terminal-cmd)"
+      },
+      {
+        "command": "yutools.terminal_command_serve_llm",
+        "title": "Python LLM server",
+        "icon": "$(play-circle)"
+      },
+      {
+        "command": "yutools.glassit_increase",
+        "title": "Alpha: Increase the transparency",
+        "icon": "$(chevron-up)"
+      },
+      {
+        "command": "yutools.glassit_decrease",
+        "title": "Alpha: Decrease the transparency",
+        "icon": "$(chevron-down)"
+      },
+      {
+        "command": "yutools.glassit_maximize",
+        "title": "Alpha: Maximize the transparency",
+        "icon": "$(circle-empty)"
+      },
+      {
+        "command": "yutools.glassit_minimize",
+        "title": "Alpha: Minimize the transparency",
+        "icon": "$(circle-filled)"
+      },
+      {
+        "command": "yutools.glassit_transparent",
+        "title": "Alpha: be transparent",
+        "icon": "$(circle-empty)"
+      },
+      {
+        "command": "yutools.file_menu_wsl_rm_f",
+        "title": "99. 🗑️ Hapus file"
+      },
+      {
+        "command": "yutools.dir_menu_wsl_rm_rf_content",
+        "title": "97. 🗑️ Hapus konten direktori/*"
+      },
+      {
+        "command": "yutools.dir_menu_wsl_rm_rf",
+        "title": "98. 🗑️ Hapus direktori dg win32 gnu"
+      },
+      {
+        "command": "yutools.dir_menu_wsl_rm_rf_ensure_wsl",
+        "title": "99. 🗑️ Hapus direktori dg WSL"
+      },
+      {
+        "command": "yutools.showSymbolsInFile",
+        "title": "Yutools: showSymbolsInFile"
+      },
+      {
+        "command": "yutools.showMultilineInput",
+        "title": "Yutools showMultilineInput - Input dari webview ke editor aktif"
+      },
+      {
+        "command": "yutools.showMultilineInputForFmus",
+        "title": "Yutools showMultilineInputForFmus"
+      },
+      {
+        "command": "yutools.showMultilineInputForLLM",
+        "title": "Yutools showMultilineInputForLLM"
+      },
+      {
+        "command": "yutools.input_quick_query_llm",
+        "title": "Yutools Input quick LLM"
+      },
+      {
+        "command": "yutools.input_quick_exec_fmus",
+        "title": "Yutools Input quick FMUS"
+      },
+      {
+        "command": "yutools.show_markdown_help",
+        "title": "Yutools Markdown Show"
+      },
+      {
+        "command": "yutools.edit_markdown_help",
+        "title": "Yutools Markdown Edit"
+      },
+      {
+        "command": "yutools.floatingcursorwidget_handler",
+        "title": "floatingcursorwidget_handler"
+      },
+      {
+        "command": "yutools.ctrl+l",
+        "title": "Fulled: ◀️Show Sidebar"
+      },
+      {
+        "command": "yutools.ctrl+k",
+        "title": "Fulled: Show Selection Lens"
+      },
+      {
+        "command": "yutools.approveDiff",
+        "title": "Fulled: Approve Diff"
+      },
+      {
+        "command": "yutools.discardDiff",
+        "title": "Fulled: Discard Diff"
+      },
+      {
+        "command": "yutools.diff.applyClipboardDiff",
+        "title": "applyClipboardDiff"
+      },
+      {
+        "command": "yutools.dir_context_react_webpack_create",
+        "title": "🚀Create react/webpack"
+      },
+      {
+        "command": "yutools.dir_context_nextjs_shadcn_create",
+        "title": "🚀Create nextjs/shadcn"
+      },
+      {
+        "command": "yutools.dir_context_react_vite_create",
+        "title": "🚀Create react/vite"
+      },
+      {
+        "command": "yutools.dir_context_react_vite_create2",
+        "title": "🚀Create react/vite 2"
+      },
+      {
+        "command": "yutools.dir_context_nest_create",
+        "title": "🚀Create nest"
+      },
+      {
+        "command": "yutools.dir_context_create_spring_boot",
+        "title": "🚀Create spring boot"
+      },
+      {
+        "command": "yutools.dir_context_create_flutter1",
+        "title": "🚀Create flutter v1"
+      },
+      {
+        "command": "yutools.dir_context_create_node_express",
+        "title": "🚀Create Node/express"
+      },
+      {
+        "command": "yutools.dir_context_rust_axum",
+        "title": "🚀Create rust axum"
+      },
+      {
+        "command": "yutools.dir_context_dir_context_scala_playrust_axum",
+        "title": "🚀Create scala play"
+      },
+      {
+        "command": "yutools.dir_context_create_react_native1",
+        "title": "🚀Create react-native v1"
+      },
+      {
+        "command": "yutools.dir_context_create_go_echo",
+        "title": "🚀Create go/echo"
+      },
+      {
+        "command": "yutools.dir_context_scala_play",
+        "title": "🚀Create scala play"
+      },
+      {
+        "command": "yutools.register_dir_context_create_android_kotlin",
+        "title": "✨register_dir_context_create_android_kotlin"
+      },
+      {
+        "command": "yutools.register_dir_context_create_angular",
+        "title": "✨register_dir_context_create_angular"
+      },
+      {
+        "command": "yutools.register_dir_context_create_apache_airflow",
+        "title": "✨register_dir_context_create_apache_airflow"
+      },
+      {
+        "command": "yutools.register_dir_context_create_asp_net_core",
+        "title": "✨register_dir_context_create_asp_net_core"
+      },
+      {
+        "command": "yutools.register_dir_context_create_astro",
+        "title": "✨register_dir_context_create_astro"
+      },
+      {
+        "command": "yutools.register_dir_context_create_bot_discord",
+        "title": "✨register_dir_context_create_bot_discord"
+      },
+      {
+        "command": "yutools.register_dir_context_create_bot_telegram",
+        "title": "✨register_dir_context_create_bot_telegram"
+      },
+      {
+        "command": "yutools.register_dir_context_create_bot_slack",
+        "title": "✨register_dir_context_create_bot_slack"
+      },
+      {
+        "command": "yutools.register_dir_context_create_clojure_compojure",
+        "title": "✨register_dir_context_create_clojure_compojure"
+      },
+      {
+        "command": "yutools.register_dir_context_create_clojure_luminus",
+        "title": "✨register_dir_context_create_clojure_luminus"
+      },
+      {
+        "command": "yutools.register_dir_context_create_cloud_aws",
+        "title": "✨register_dir_context_create_cloud_aws"
+      },
+      {
+        "command": "yutools.register_dir_context_create_cloud_azure",
+        "title": "✨register_dir_context_create_cloud_azure"
+      },
+      {
+        "command": "yutools.register_dir_context_create_cloud_gcp",
+        "title": "✨register_dir_context_create_cloud_gcp"
+      },
+      {
+        "command": "yutools.register_dir_context_create_cpp_library",
+        "title": "✨register_dir_context_create_cpp_library"
+      },
+      {
+        "command": "yutools.register_dir_context_create_dapp",
+        "title": "✨register_dir_context_create_dapp"
+      },
+      {
+        "command": "yutools.register_dir_context_create_deno",
+        "title": "✨register_dir_context_create_deno"
+      },
+      {
+        "command": "yutools.register_dir_context_create_desktop_electron",
+        "title": "✨register_dir_context_create_desktop_electron"
+      },
+      {
+        "command": "yutools.register_dir_context_create_desktop_javafx",
+        "title": "✨register_dir_context_create_desktop_javafx"
+      },
+      {
+        "command": "yutools.register_dir_context_create_desktop_pyqt6",
+        "title": "✨register_dir_context_create_desktop_pyqt6"
+      },
+      {
+        "command": "yutools.register_dir_context_create_desktop_scalafx",
+        "title": "✨register_dir_context_create_desktop_scalafx"
+      },
+      {
+        "command": "yutools.register_dir_context_create_desktop_tkinter",
+        "title": "✨register_dir_context_create_desktop_tkinter"
+      },
+      {
+        "command": "yutools.register_dir_context_create_django",
+        "title": "✨register_dir_context_create_django"
+      },
+      {
+        "command": "yutools.register_dir_context_create_devops_docker",
+        "title": "✨register_dir_context_create_devops_docker"
+      },
+      {
+        "command": "yutools.register_dir_context_create_devops_kubernetes",
+        "title": "✨register_dir_context_create_devops_kubernetes"
+      },
+      {
+        "command": "yutools.register_dir_context_create_devops_terraform",
+        "title": "✨register_dir_context_create_devops_terraform"
+      },
+      {
+        "command": "yutools.register_dir_context_create_extension_chrome",
+        "title": "✨register_dir_context_create_extension_chrome"
+      },
+      {
+        "command": "yutools.register_dir_context_create_extension_firefox",
+        "title": "✨register_dir_context_create_extension_firefox"
+      },
+      {
+        "command": "yutools.register_dir_context_create_extension_vscode",
+        "title": "✨register_dir_context_create_extension_vscode"
+      },
+      {
+        "command": "yutools.register_dir_context_create_fastapi",
+        "title": "✨register_dir_context_create_fastapi"
+      },
+      {
+        "command": "yutools.register_dir_context_create_flask",
+        "title": "✨register_dir_context_create_flask"
+      },
+      {
+        "command": "yutools.register_dir_context_create_go_cli",
+        "title": "✨register_dir_context_create_go_cli"
+      },
+      {
+        "command": "yutools.register_dir_context_create_go_fasthttp",
+        "title": "✨register_dir_context_create_go_fasthttp"
+      },
+      {
+        "command": "yutools.register_dir_context_create_go_beego",
+        "title": "✨register_dir_context_create_go_beego"
+      },
+      {
+        "command": "yutools.register_dir_context_create_go_fiber",
+        "title": "✨register_dir_context_create_go_fiber"
+      },
+      {
+        "command": "yutools.register_dir_context_create_go_gin",
+        "title": "✨register_dir_context_create_go_gin"
+      },
+      {
+        "command": "yutools.register_dir_context_create_go_gorilla",
+        "title": "✨register_dir_context_create_go_gorilla"
+      },
+      {
+        "command": "yutools.register_dir_context_create_haskell_library",
+        "title": "✨register_dir_context_create_haskell_library"
+      },
+      {
+        "command": "yutools.register_dir_context_create_java_dropwizard",
+        "title": "✨register_dir_context_create_java_dropwizard"
+      },
+      {
+        "command": "yutools.register_dir_context_create_java_jakartaee",
+        "title": "✨register_dir_context_create_java_jakartaee"
+      },
+      {
+        "command": "yutools.register_dir_context_create_java_micronaut",
+        "title": "✨register_dir_context_create_java_micronaut"
+      },
+      {
+        "command": "yutools.register_dir_context_create_java_quarkus",
+        "title": "✨register_dir_context_create_java_quarkus"
+      },
+      {
+        "command": "yutools.register_dir_context_create_java_selenium",
+        "title": "✨register_dir_context_create_java_selenium"
+      },
+      {
+        "command": "yutools.register_dir_context_create_java_vaadin",
+        "title": "✨register_dir_context_create_java_vaadin"
+      },
+      {
+        "command": "yutools.register_dir_context_create_java_vertx",
+        "title": "✨register_dir_context_create_java_vertx"
+      },
+      {
+        "command": "yutools.register_dir_context_create_kafka_go",
+        "title": "✨register_dir_context_create_kafka_go"
+      },
+      {
+        "command": "yutools.register_dir_context_create_kafka_python",
+        "title": "✨register_dir_context_create_kafka_python"
+      },
+      {
+        "command": "yutools.register_dir_context_create_kafka_java",
+        "title": "✨register_dir_context_create_kafka_java"
+      },
+      {
+        "command": "yutools.register_dir_context_create_kafka_scala",
+        "title": "✨register_dir_context_create_kafka_scala"
+      },
+      {
+        "command": "yutools.register_dir_context_create_laravel",
+        "title": "✨register_dir_context_create_laravel"
+      },
+      {
+        "command": "yutools.register_dir_context_create_mqtt_python",
+        "title": "✨register_dir_context_create_mqtt_python"
+      },
+      {
+        "command": "yutools.register_dir_context_create_mqtt_go",
+        "title": "✨register_dir_context_create_mqtt_go"
+      },
+      {
+        "command": "yutools.register_dir_context_create_mqtt_java",
+        "title": "✨register_dir_context_create_mqtt_java"
+      },
+      {
+        "command": "yutools.register_dir_context_create_nextjs_material",
+        "title": "✨register_dir_context_create_nextjs_material"
+      },
+      {
+        "command": "yutools.register_dir_context_create_node_fastify",
+        "title": "✨register_dir_context_create_node_fastify"
+      },
+      {
+        "command": "yutools.register_dir_context_create_npm_package",
+        "title": "✨register_dir_context_create_npm_package"
+      },
+      {
+        "command": "yutools.register_dir_context_create_openapi_swagger",
+        "title": "✨register_dir_context_create_openapi_swagger"
+      },
+      {
+        "command": "yutools.register_dir_context_create_phoenix",
+        "title": "✨register_dir_context_create_phoenix"
+      },
+      {
+        "command": "yutools.register_dir_context_create_protobuf_grpc",
+        "title": "✨register_dir_context_create_protobuf_grpc"
+      },
+      {
+        "command": "yutools.register_dir_context_create_python_asyncio_celery",
+        "title": "✨register_dir_context_create_python_asyncio_celery"
+      },
+      {
+        "command": "yutools.register_dir_context_create_python_package",
+        "title": "✨register_dir_context_create_python_package"
+      },
+      {
+        "command": "yutools.register_dir_context_create_python_pandas",
+        "title": "✨register_dir_context_create_python_pandas"
+      },
+      {
+        "command": "yutools.register_dir_context_create_python_pytorch",
+        "title": "✨register_dir_context_create_python_pytorch"
+      },
+      {
+        "command": "yutools.register_dir_context_create_python_selenium",
+        "title": "✨register_dir_context_create_python_selenium"
+      },
+      {
+        "command": "yutools.register_dir_context_create_python_tensorflow",
+        "title": "✨register_dir_context_create_python_tensorflow"
+      },
+      {
+        "command": "yutools.register_dir_context_create_ruby_on_rails",
+        "title": "✨register_dir_context_create_ruby_on_rails"
+      },
+      {
+        "command": "yutools.register_dir_context_create_react_cra",
+        "title": "✨register_dir_context_create_react_cra"
+      },
+      {
+        "command": "yutools.register_dir_context_create_remix",
+        "title": "✨register_dir_context_create_remix"
+      },
+      {
+        "command": "yutools.register_dir_context_create_ruby_library",
+        "title": "✨register_dir_context_create_ruby_library"
+      },
+      {
+        "command": "yutools.register_dir_context_create_rust_actix",
+        "title": "✨register_dir_context_create_rust_actix"
+      },
+      {
+        "command": "yutools.register_dir_context_create_rust_rocket",
+        "title": "✨register_dir_context_create_rust_rocket"
+      },
+      {
+        "command": "yutools.register_dir_context_create_rust_tokio",
+        "title": "✨register_dir_context_create_rust_tokio"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scala_akka",
+        "title": "✨register_dir_context_create_scala_akka"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scala_cats",
+        "title": "✨register_dir_context_create_scala_cats"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scala_spark",
+        "title": "✨register_dir_context_create_scala_spark"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scala_zio",
+        "title": "✨register_dir_context_create_scala_zio"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_bs4",
+        "title": "✨register_dir_context_create_scraping_bs4"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_cheerio",
+        "title": "✨register_dir_context_create_scraping_cheerio"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_colly",
+        "title": "✨register_dir_context_create_scraping_colly"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_goquery",
+        "title": "✨register_dir_context_create_scraping_goquery"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_jsoup",
+        "title": "✨register_dir_context_create_scraping_jsoup"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_playwright",
+        "title": "✨register_dir_context_create_scraping_playwright"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_puppeteer",
+        "title": "✨register_dir_context_create_scraping_puppeteer"
+      },
+      {
+        "command": "yutools.register_dir_context_create_scraping_scrapy",
+        "title": "✨register_dir_context_create_scraping_scrapy"
+      },
+      {
+        "command": "yutools.register_dir_context_create_svelte",
+        "title": "✨register_dir_context_create_svelte"
+      },
+      {
+        "command": "yutools.register_dir_context_create_tauri",
+        "title": "✨register_dir_context_create_tauri"
+      },
+      {
+        "command": "yutools.register_dir_context_create_vue_vite",
+        "title": "✨register_dir_context_create_vue_vite"
+      },
+      {
+        "command": "yutools.register_dir_context_create_web3",
+        "title": "✨register_dir_context_create_web3"
+      },
+      {
+        "command": "yutools.register_dir_context_create_webrtc",
+        "title": "✨register_dir_context_create_webrtc"
+      },
+      {
+        "command": "yutools.register_dir_context_create_websocket_mobile",
+        "title": "✨register_dir_context_create_websocket_mobile"
+      },
+      {
+        "command": "yutools.register_dir_context_create_websocket_web",
+        "title": "✨register_dir_context_create_websocket_web"
+      },
+      {
+        "command": "yutools.saveClipboardContent",
+        "title": "saveClipboardContent"
+      },
+      {
+        "command": "yutools.showClipboardContent",
+        "title": "showClipboardContent"
+      },
+      {
+        "command": "yutools.fileUtilsSearchFiles",
+        "title": "🔎fileUtilsSearchFiles"
+      },
+      {
+        "command": "yutools.jsonUtilsModifyJson",
+        "title": "jsonUtilsModifyJson"
+      },
+      {
+        "command": "yutools.selectActive",
+        "category": "yutools/fmus-vscode",
+        "title": "selectActive"
+      },
+      {
+        "command": "yutools.selectSecondaryActive",
+        "category": "yutools/fmus-vscode",
+        "title": "selectSecondaryActive"
+      },
+      {
+        "command": "yutools.selectInvokeAll",
+        "category": "yutools/fmus-vscode",
+        "title": "selectInvokeAll"
+      },
+      {
+        "command": "yutools.selectFmusFile",
+        "category": "yutools/fmus-vscode",
+        "title": "selectFmusFile"
+      },
+      {
+        "command": "yutools.selectMode",
+        "category": "yutools/fmus-vscode",
+        "title": "selectMode"
+      },
+      {
+        "command": "yutools.visitChromeURL",
+        "category": "yutools/browser",
+        "title": "Chrome"
+      },
+      {
+        "command": "yutools.visitFirefoxURL",
+        "category": "yutools/browser",
+        "title": "Firefox"
+      },
+      {
+        "command": "yutools.visitURL",
+        "category": "yutools/browser",
+        "title": "Visit URL with Chrome/Firefox"
+      },
+      {
+        "command": "yutools.visitChromeWithPlaywright",
+        "category": "yutools/browser",
+        "title": "Chrome/Playwright"
+      },
+      {
+        "command": "yutools.visitFirefoxWithPlaywright",
+        "category": "yutools/browser",
+        "title": "Firefox/Playwright"
+      },
+      {
+        "command": "yutools.browsers.listBrowserProfiles",
+        "category": "yutools/browser",
+        "title": "List Profiles Chrome/Firefox"
+      },
+      {
+        "command": "yutools.browsers.openBrowserWithProfile",
+        "category": "yutools/browser",
+        "title": "Dynamic Open Chrome/Firefox"
+      },
+      {
+        "command": "yutools.browsers.openBrowserWithProfileSelection",
+        "category": "yutools/browser",
+        "title": "Dynamic Open Chrome/Firefox Selection"
+      },
+      {
+        "command": "yutools.commands.executeShell",
+        "category": "yutools/browser",
+        "title": "executeShell"
+      },
+      {
+        "command": "yutools.commands.executeShellDynamic",
+        "category": "yutools/browser",
+        "title": "executeShellDynamic"
+      },
+      {
+        "command": "yutools.commands.openBrowserWithUrl",
+        "category": "yutools/browser",
+        "title": "openBrowserWithUrl"
+      },
+      {
+        "command": "yutools.commands.openBrowserWithUrlDynamic",
+        "category": "yutools/browser",
+        "title": "openBrowserWithUrlDynamic"
+      },
+      {
+        "command": "yutools.toggleShowPrimaryCommands",
+        "title": "👓primary",
+        "icon": "$(symbol-constant)"
+      },
+      {
+        "command": "yutools.toggleShowSecondaryCommands",
+        "title": "👓secondary",
+        "icon": "$(symbol-enum)"
+      },
+      {
+        "command": "yutools.toggleShowLLMRawQuery",
+        "title": "👓llm raw",
+        "icon": "$(symbol-misc)"
+      },
+      {
+        "command": "yutools.toggleShowLLMCodeQuery",
+        "title": "👓llm code",
+        "icon": "$(symbol-misc)"
+      },
+      {
+        "command": "yutools.toggleShowLLMStreamingQuery",
+        "title": "👓llm streaming",
+        "icon": "$(symbol-misc)"
+      },
+      {
+        "command": "yutools.toggleShowLLMFmusQuery",
+        "title": "👓llm fmus"
+      },
+      {
+        "command": "yutools.toggleShowLLMMultimodalQuery",
+        "title": "👓llm multimodal"
+      },
+      {
+        "command": "yutools.toggleShowInputBoxForPrompt",
+        "title": "👓llm input box"
+      },
+      {
+        "command": "yutools.toggleShowLLMResponseBeside",
+        "title": "👓llm beside editor"
+      },
+      {
+        "command": "yutools.enableExtensions",
+        "title": "Yutools: enableExtensions"
+      },
+      {
+        "command": "yutools.disableExtensions",
+        "title": "Yutools: DisableExtensions"
+      },
+      {
+        "command": "yutools.collapseAllCommand",
+        "title": "Yutools: Collapse file explorer"
+      },
+      {
+        "command": "yutools.revealFileCommand2",
+        "title": "Yutools: Reveal filepath in file explorer"
+      },
+      {
+        "command": "yutools.searchAndRevealFileInExplorer",
+        "title": "Yutools: Search and reveal file in file explorer"
+      },
+      {
+        "command": "yutools.togglePrimarySidebar",
+        "title": "◀️Toggle Primary Sidebar",
+        "icon": "$(layout-sidebar-left)"
+      },
+      {
+        "command": "yutools.listCommands",
+        "title": "🌈List yutools commands"
+      },
+      {
+        "command": "yutools.closeVscodeWindow",
+        "title": "🛑Exit"
+      },
+      {
+        "command": "yutools.killAllTerminals",
+        "title": "❌Kill terminals"
+      },
+      {
+        "command": "yutools.selectAndActivateTerminal",
+        "title": "🎯Select terminal"
+      },
+      {
+        "command": "yutools.showOpenedEditors",
+        "title": "📂Show opened editors"
+      },
+      {
+        "command": "yutools.closeAllEditors",
+        "title": "🚫Close all editors"
+      },
+      {
+        "command": "yutools.closeAllButActiveEditor",
+        "title": "🔒Close all but active"
+      },
+      {
+        "command": "aide.copyAsPrompt",
+        "title": "✨ Aide: Copy As AI Prompt"
+      },
+      {
+        "command": "aide.askAI",
+        "title": "✨ Aide: Ask AI"
+      },
+      {
+        "command": "aide.codeConvert",
+        "title": "✨ Aide: Code Convert",
+        "icon": "$(notebook-open-as-text)"
+      },
+      {
+        "command": "aide.codeViewerHelper",
+        "title": "✨ Aide: Code Viewer Helper",
+        "icon": "$(open-editors-view-icon)"
+      },
+      {
+        "command": "aide.expertCodeEnhancer",
+        "title": "✨ Aide: Expert Code Enhancer",
+        "icon": "$(extensions-configure-recommended)"
+      },
+      {
+        "command": "aide.renameVariable",
+        "title": "✨ Aide: Rename Variable"
+      },
+      {
+        "command": "aide.smartPaste",
+        "title": "✨ Aide: Smart Paste"
+      },
+      {
+        "command": "aide.batchProcessor",
+        "title": "✨ Aide: AI Batch Processor"
+      },
+      {
+        "command": "aide.copyFileText",
+        "title": "Copy text",
+        "enablement": "false"
+      },
+      {
+        "command": "aide.quickCloseFileWithoutSave",
+        "title": "Quick close",
+        "enablement": "false"
+      },
+      {
+        "command": "aide.replaceFile",
+        "title": "Replace original",
+        "enablement": "false"
+      },
+      {
+        "command": "aide.showDiff",
+        "title": "Compare original",
+        "enablement": "false"
+      },
+      {
+        "command": "yutools.selectFilesForBookmark",
+        "title": "🗂️Select Files for Bookmark",
+        "icon": "$(folder-open)"
+      },
+      {
+        "command": "yutools.removeFromBookmark",
+        "title": "❌📄Remove from File Workspace Bookmark",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "yutools.addToBookmark",
+        "title": "📌📄Add to File Workspace Bookmark",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "yutools.viewBookmark",
+        "title": "🔖📄View File Workspace Bookmark",
+        "icon": "$(bookmarks)"
+      },
+      {
+        "command": "yutools.bookmarks.redis.addToBookmark",
+        "title": "📦📄📌✚Redis File 📕",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "yutools.bookmarks.redis.viewBookmark",
+        "title": "📦📄🔖👀Redis File 📕",
+        "icon": "$(bookmarks)"
+      },
+      {
+        "command": "yutools.bookmarks.redis.addFolderToBookmark",
+        "title": "📦📂📌➕Redis FOLDER 📕",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "yutools.bookmarks.redis.viewFolderBookmark",
+        "title": "📦📂🔖👁️Redis FOLDER 📕",
+        "icon": "$(bookmarks)"
+      },
+      {
+        "command": "yutools.bookmarks.redis.removeFolderFromBookmark",
+        "title": "📦📂📌➖Redis FOLDER 📕",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "yutools.bookmarks.redis.addFileToBookmarkUsingDialog",
+        "title": "📦📄 ✚ to 📕(Open File Dialog)",
+        "icon": "$(file )"
+      },
+      {
+        "command": "yutools.bookmarks.redis.addFolderToBookmarkUsingDialog",
+        "title": "📦📂 ➕ to 📕(Open Folder Dialog)",
+        "icon": "$(folder )"
+      },
+      {
+        "command": "yutools.bookmarks.redis.openTerminalInBookmarkedFolder",
+        "title": "🖥️📂Open Terminal for 📦📕",
+        "icon": "$(terminal )"
+      },
+      {
+        "command": "yutools.bookmarks.redis.openVSCodeInBookmarkedFolder",
+        "title": "🪟📂Open VSCode for 📦📕",
+        "icon": "$(window )"
+      },
+      {
+        "command": "yutools.addFolderToBookmark",
+        "title": "📌📂Add to Folder Workspace Bookmark",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "yutools.viewFolderBookmark",
+        "title": "🔖📂View Folder Workspace Bookmark",
+        "icon": "$(bookmarks)"
+      },
+      {
+        "command": "yutools.removeFolderFromBookmark",
+        "title": "❌📂Remove from Folder Workspace Bookmark",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "yutools.addFolderToBookmarkFromExplorer",
+        "title": "👓📂Add folder to Workspace Bookmark (explorer)",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "yutools.addFileToBookmarkUsingDialog",
+        "title": "📄Add File to Workspace Bookmark (Open File Dialog)",
+        "icon": "$(file )"
+      },
+      {
+        "command": "yutools.addFolderToBookmarkUsingDialog",
+        "title": "📂Add Folder to Workspace Bookmark (Open Folder Dialog)",
+        "icon": "$(folder )"
+      },
+      {
+        "command": "yutools.openTerminalInBookmarkedFolder",
+        "title": "🖥️📂Open Terminal for Workspace Bookmark",
+        "icon": "$(terminal )"
+      },
+      {
+        "command": "yutools.cmd.runDynamicCommand",
+        "title": "🖥️Run Dynamic command in Terminal",
+        "icon": "$(terminal )"
+      },
+      {
+        "command": "yutools.bookmarks.redis.openTerminalAndRunCommand",
+        "title": "🖥️📂Open Terminal for Redis 📕, Run Command",
+        "icon": "$(terminal )"
+      },
+      {
+        "command": "yutools.createNewTextFile",
+        "title": "📝Create New Text File",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "yutools.files.createNewFileFromContext",
+        "title": "📝Context => New File",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "yutools.files.copyFileFromContext",
+        "title": "📝Context => Copy File",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "yutools.editors.new_editor_beside",
+        "title": "📝Context => Beside",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "yutools.terminal.pasteClipboard",
+        "title": "Paste"
+      },
+      {
+        "command": "yutools.terminal.showMessage",
+        "title": "Message"
+      },
+      {
+        "command": "yutools.terminal.gitStatus",
+        "title": "git status"
+      },
+      {
+        "command": "yutools.terminal.gitAddAll",
+        "title": "git add ."
+      },
+      {
+        "command": "yutools.commands.commander.showWebview",
+        "title": "Yutools Commander Webview"
+      },
+      {
+        "command": "yutools.commands.commander.showWebviewCommander",
+        "title": "Yutools Commander Webview 2.0"
+      },
+      {
+        "command": "yutools.terminal.gitLog",
+        "title": "git log"
+      },
+      {
+        "command": "yutools.terminal.gitAdd",
+        "title": "git add"
+      },
+      {
+        "command": "yutools.terminal.gitCommit",
+        "title": "git commit"
+      },
+      {
+        "command": "yutools.terminal.gitDiff",
+        "title": "git diff"
+      },
+      {
+        "command": "yutools.geminiv2.geminiStream",
+        "title": "Gemini Stream"
+      },
+      {
+        "command": "yutools.llm.settings.changeSettings",
+        "title": "Change LLM settings - old version"
+      },
+      {
+        "command": "yutools.llm.settings.changeSettings2",
+        "title": "Change LLM params"
+      },
+      {
+        "command": "yutools.llm.settings.changeSettings3",
+        "title": "Change LLM params incl vision models"
+      },
+      {
+        "command": "yutools.llm.cerebras.sendPrompt",
+        "title": "Cerebras"
+      },
+      {
+        "command": "yutools.llm.cohere.sendPrompt",
+        "title": "Cohere"
+      },
+      {
+        "command": "yutools.geminiv2.geminiStreamCollected",
+        "title": "Gemini Stream Collect"
+      },
+      {
+        "command": "yutools.llm.glhf.sendPrompt",
+        "title": "GLHF"
+      },
+      {
+        "command": "yutools.llm.groq.sendPrompt",
+        "title": "Groq"
+      },
+      {
+        "command": "yutools.llm.huggingface.sendPrompt",
+        "title": "HF"
+      },
+      {
+        "command": "yutools.llm.hyperbolic.sendPrompt",
+        "title": "Hyperbolic"
+      },
+      {
+        "command": "yutools.llm.openai.sendPrompt",
+        "title": "OpenAI"
+      },
+      {
+        "command": "yutools.llm.sambanova.sendPrompt",
+        "title": "Sambanova"
+      },
+      {
+        "command": "yutools.llm.together.sendPrompt",
+        "title": "Together"
+      },
+      {
+        "command": "yutools.llm.xai.sendPrompt",
+        "title": "xAI"
+      },
+      {
+        "command": "yutools.llm.cerebras.sendPromptCode",
+        "title": "Cerebras - Code"
+      },
+      {
+        "command": "yutools.llm.cohere.sendPromptCode",
+        "title": "Cohere - Code"
+      },
+      {
+        "command": "yutools.llm.gemini.sendPromptCode",
+        "title": "Gemini - Code"
+      },
+      {
+        "command": "yutools.llm.glhf.sendPromptCode",
+        "title": "GLHF - Code"
+      },
+      {
+        "command": "yutools.llm.groq.sendPromptCode",
+        "title": "Groq - Code"
+      },
+      {
+        "command": "yutools.llm.huggingface.sendPromptCode",
+        "title": "HF - Code"
+      },
+      {
+        "command": "yutools.llm.hyperbolic.sendPromptCode",
+        "title": "Hyperbolic - Code"
+      },
+      {
+        "command": "yutools.llm.openai.sendPromptCode",
+        "title": "OpenAI - Code"
+      },
+      {
+        "command": "yutools.llm.sambanova.sendPromptCode",
+        "title": "Sambanova - Code"
+      },
+      {
+        "command": "yutools.llm.together.sendPromptCode",
+        "title": "Together - Code"
+      },
+      {
+        "command": "yutools.llm.xai.sendPromptCode",
+        "title": "XAI - Code"
+      },
+      {
+        "command": "yutools.llm.cerebras.sendPromptWithFilePrefix",
+        "title": "Cerebras - FMUS"
+      },
+      {
+        "command": "yutools.llm.cohere.sendPromptWithFilePrefix",
+        "title": "Cohere - FMUS"
+      },
+      {
+        "command": "yutools.llm.gemini.sendPromptWithFilePrefix",
+        "title": "Gemini - FMUS"
+      },
+      {
+        "command": "yutools.llm.glhf.sendPromptWithFilePrefix",
+        "title": "GLHF - FMUS"
+      },
+      {
+        "command": "yutools.llm.groq.sendPromptWithFilePrefix",
+        "title": "Groq - FMUS"
+      },
+      {
+        "command": "yutools.llm.huggingface.sendPromptWithFilePrefix",
+        "title": "HF - FMUS"
+      },
+      {
+        "command": "yutools.llm.hyperbolic.sendPromptWithFilePrefix",
+        "title": "Hyperbolic - FMUS"
+      },
+      {
+        "command": "yutools.llm.openai.sendPromptWithFilePrefix",
+        "title": "OpenAI - FMUS"
+      },
+      {
+        "command": "yutools.llm.sambanova.sendPromptWithFilePrefix",
+        "title": "Sambanova - FMUS"
+      },
+      {
+        "command": "yutools.llm.together.sendPromptWithFilePrefix",
+        "title": "Together - FMUS"
+      },
+      {
+        "command": "yutools.llm.xai.sendPromptWithFilePrefix",
+        "title": "XAI - FMUS"
+      },
+      {
+        "command": "yutools.llm.huggingface.generateImage",
+        "title": "Hugging Face generate image"
+      },
+      {
+        "command": "yutools.llm.huggingface.imageToText",
+        "title": "Hugging Face image to text"
+      },
+      {
+        "command": "yutools.llm.huggingface.transformImage",
+        "title": "Hugging Face transform image"
+      },
+      {
+        "command": "yutools.llm.huggingface.visualQuestionAnswering",
+        "title": "Hugging Face visual QA"
+      },
+      {
+        "command": "yutools.llm.huggingface.documentQuestionAnswering",
+        "title": "Hugging Face document QA"
+      },
+      {
+        "command": "yutools.multimodal.gemini.generateFromFileDialog",
+        "title": "Gemini Image from file dialog v1"
+      },
+      {
+        "command": "yutools.multimodal.gemini.generateFromClipboard",
+        "title": "Gemini Image from clipboard"
+      },
+      {
+        "command": "yutools.multimodal.gemini.textGenMultimodalOneImagePrompt",
+        "title": "Gemini Image from file dialog v2"
+      },
+      {
+        "command": "yutools.multimodal.together.setDefaultSettings",
+        "title": "Together set default settings"
+      },
+      {
+        "command": "yutools.multimodal.together.generateImage",
+        "title": "Together generate image"
+      },
+      {
+        "command": "yutools.multimodal.together.uploadImage",
+        "title": "Together upload image"
+      },
+      {
+        "command": "yutools.multimodal.together.describeImageUrl",
+        "title": "Together describe image url"
+      },
+      {
+        "command": "yutools.multimodal.together.describeLocalImage",
+        "title": "Together describe image local"
+      },
+      {
+        "command": "yutools.multimodal.groqVision.analyzeImageFile",
+        "title": "Groq describe image file"
+      },
+      {
+        "command": "yutools.multimodal.groqVision.analyzeImageUrl",
+        "title": "Groq describe image url"
+      },
+      {
+        "command": "yutools.multimodal.groqVision.analyzeClipboardImage",
+        "title": "Groq describe image url"
+      },
+      {
+        "command": "yutools.llm.tools.aider.runAider",
+        "title": "🚑models",
+        "icon": "$(flame)"
+      },
+      {
+        "command": "yutools.llm.tools.aider.runAiderWithApiBase",
+        "title": "🚑models+base",
+        "icon": "$(flame)"
+      },
+      {
+        "command": "yutools.llm.tools.aider.sendCommandToTerminal",
+        "title": "⛑️commands",
+        "icon": "$(flame)"
+      },
+
+      { "command": "yutools.comments.listCommentsInActiveFile", "title": "▤💬List comments" },
+      { "command": "yutools.comments.removeAllCommentsInActiveFile", "title": "🚮💬Remove comments" },
+      { "command": "yutools.comments.removeAllCommentsInActiveFileOmitLines", "title": "🚮💬Remove comments+lines" },
+
+      {
+        "command": "yutools.errors.listErrorsAndWarnings",
+        "title": "List Errors and Warnings"
+      },
+      {
+        "command": "yutools.errors.joinErrors",
+        "title": "List Errors"
+      },
+      {
+        "command": "yutools.errors.joinWarnings",
+        "title": "List Warnings"
+      },
+      {
+        "command": "yutools.errors.filterDiagnostics",
+        "title": "Filter diagnostics"
+      },
+      {
+        "command": "yutools.errors.toggleProblems",
+        "title": "Problems panel"
+      },
+      {
+        "command": "yutools.errors.joinErrorsWithCodeLLMFormat",
+        "title": "List Errors + Code"
+      },
+      {
+        "command": "yutools.errors.joinErrorsWithNumberingAndFileContent",
+        "title": "List Errors + Code + File"
+      },
+      {
+        "command": "yutools.errors.joinErrorsWithEnhancedFormat",
+        "title": "$(rocket) Enhanced: List Errors + Code"
+      },
+      {
+        "command": "yutools.errors.joinErrorsWithNumberingAndFileContentEnhanced",
+        "title": "$(file-binary) Enhanced: List Errors + Code + File"
+      },
+      {
+        "command": "yutools.errors.applyAllQuickFixes",
+        "title": "$(wrench) Quick fix Errors"
+      },
+      {
+        "command": "yutools.errors.fixUndefinedSymbol",
+        "title": "$(symbol-variable) Quick fix undefined symbols"
+      },
+      {
+        "command": "yutools.errors.applyTypescriptFixesWithTypeError",
+        "title": "$(type-hierarchy) Typescript Fixes"
+      },
+      {
+        "command": "yutools.palette_query.openCommandPaletteWithSearch",
+        "title": "Command palette search"
+      },
+      {
+        "command": "yutools.palette_query.openSettingsWithSearch",
+        "title": "Settings search"
+      },
+      {
+        "command": "yutools.fmus.processFolder",
+        "title": "FMUS: processFolder"
+      },
+      {
+        "command": "yutools.fmus.addEntry",
+        "title": "FMUS: addEntry"
+      },
+      {
+        "command": "yutools.fmus.processFolderForFMUSTree",
+        "title": "FMUS: index/fmus"
+      },
+      {
+        "command": "yutools.picker.gitOperations",
+        "title": "Picker git operations"
+      },
+      {
+        "command": "yutools.redis.connectAndTest",
+        "title": "Redis: 1. Connect + Test"
+      },
+      {
+        "command": "yutools.redis.paginateKeys",
+        "title": "Redis: 2. Paginate keys"
+      },
+      {
+        "command": "yutools.redis.searchKeysFast",
+        "title": "Redis: 2. Search scan"
+      },
+      {
+        "command": "yutools.redis.disconnectRedis",
+        "title": "Redis: 5. Disconnect"
+      },
+      {
+        "command": "yutools.redis.setConnectionString",
+        "title": "Redis: 9: Set connstring"
+      },
+      {
+        "command": "yutools.redis.createKey",
+        "title": "Redis: 3. Create key"
+      },
+      {
+        "command": "yutools.redis.addSetMember",
+        "title": "Redis: 3. Add set member"
+      },
+      {
+        "command": "yutools.redis.listSetMembers",
+        "title": "Redis: 3. List set member"
+      },
+      {
+        "command": "yutools.redis.listKeys",
+        "title": "Redis: 3. List all keys"
+      },
+      {
+        "command": "yutools.fileExplorer.setRoot",
+        "title": "Yutools: set tree view root from explorer (dir or file)"
+      },
+      {
+        "command": "yutools.fileExplorer.autoSetRootFromOpenDialog",
+        "title": "Yutools: set tree view root from dialog"
+      },
+      {
+        "command": "yutools.fileExplorer.autoSetRootFromActiveEditor",
+        "title": "Yutools: set tree view root from active file"
+      },
+      {
+        "command": "yutools.fileExplorer.refresh",
+        "title": "Yutools: tree view refresh"
+      },
+      {
+        "command": "yutools.streaming.gemini.streamResponse",
+        "title": "Yutools: Gemini editor streamer"
+      },
+      {
+        "command": "yutools.streaming.huggingface.streamResponse",
+        "title": "Yutools: HF editor streamer Claude"
+      },
+      {
+        "command": "yutools.streaming.huggingface.streamResponseOAI",
+        "title": "Yutools: HF editor streamer OAI"
+      },
+      {
+        "command": "yutools.streaming.hyperbolic.streamResponse",
+        "title": "Yutools: Hyperbolic editor streamer"
+      },
+      {
+        "command": "yutools.streaming.openai.streamResponse",
+        "title": "Yutools: Openai editor streamer"
+      },
+      {
+        "command": "yutools.streaming.sambanova.streamResponse",
+        "title": "Yutools: Sambanova editor streamer"
+      },
+      {
+        "command": "yutools.streaming.together.streamResponse",
+        "title": "Yutools: Together editor streamer"
+      },
+      {
+        "command": "yutools.streaming.xai.streamResponse",
+        "title": "Yutools: XAI editor streamer"
+      },
+      {
+        "command": "yutools.editors.toggleRightEditorGroup",
+        "title": "Toggle Beside/Right"
+      },
+      {
+        "command": "yutools.editors.showOpenedEditors",
+        "title": "Yutools Show Opened Editors"
+      },
+      {
+        "command": "yutools.editors.language.treatAsLanguage",
+        "title": "Yutools Set Editor Language"
+      },
+      {
+        "command": "yutools.tweet.redis.createTweet",
+        "title": "✍️Tweet",
+        "icon": "$(twitter)"
+      },
+      {
+        "command": "yutools.tweet.redis.viewTweets",
+        "title": "📜View Tweets",
+        "icon": "$(twitter)"
+      },
+      {
+        "command": "yutools.tweet.redis.deleteTweet",
+        "title": "✂️View Tweets",
+        "icon": "$(twitter)"
+      },
+      {
+        "command": "prompt.fromSelection",
+        "title": "🚀Create Prompt from Selection"
+      },
+      {
+        "command": "prompt.fromFile",
+        "title": "🚀Import Prompts from File"
+      },
+      {
+        "command": "prompt.filterByTags",
+        "title": "🚀Filter Prompts by Tags"
+      },
+      {
+        "command": "prompt.search",
+        "title": "🚀Search Prompts"
+      },
+      {
+        "command": "prompt.create",
+        "title": "🚀⚡Create Prompt (title, content, tag)"
+      },
+      {
+        "command": "prompt.viewWebview",
+        "title": "🚀View Prompts (table)"
+      },
+      {
+        "command": "prompt.viewWebviewWithInsert",
+        "title": "🚀View Prompts (table+insert)"
+      },
+      {
+        "command": "prompt.delete",
+        "title": "🚀Delete Prompts"
+      },
+      {
+        "command": "prompt.insert",
+        "title": "🚀Insert Prompt"
+      },
+      {
+        "command": "prompt.export",
+        "title": "🚀Export Prompts"
+      },
+      {
+        "command": "prompt.fromFolder",
+        "title": "🚀Import Prompts from Folder"
+      },
+      {
+        "command": "prompt.edit",
+        "title": "🚀Edit Prompt"
+      },
+      {
+        "command": "yutools.github.repoList",
+        "title": "GH repo list"
+      },
+      {
+        "command": "yutools.github.auth",
+        "title": "GH auth"
+      },
+      {
+        "command": "yutools.github.repoCreate",
+        "title": "GH repo create"
+      },
+      {
+        "command": "yutools.github.browse",
+        "title": "GH browse"
+      },
+      {
+        "command": "yutools.github.repoDelete",
+        "title": "GH repo delete"
+      },
+      {
+        "command": "yutools.previews.previewProjectOnWebviewBeside",
+        "title": "Previews: Webview"
+      },
+      {
+        "command": "yutools.previews.previewProjectOnBrowser",
+        "title": "Previews: Browser"
+      },
+      {
+        "command": "yutools.previews.swapFileRunInTerminal",
+        "title": "Previews: Replace content + Start server + Webview/Browser"
+      },
+      {
+        "command": "yutools.previews.runPreviewProjectInTerminalAndPreview",
+        "title": "Previews: Start server + Webview/Browser"
+      },
+      {
+        "command": "yutools.previews.runPreviewProjectInTerminal",
+        "title": "Previews: Start server"
+      },
+      {
+        "command": "yutools.tkinter.runTkinterAppFiles2Prompt",
+        "title": "Tkinter Files2Prompt"
+      },
+      {
+        "command": "yutools.tkinter.runTkinterAppFirefoxer",
+        "title": "Tkinter Firefox"
+      },
+      {
+        "command": "yutools.fmus-vscode.detect_insert_filepath_content",
+        "title": "FmusVscode: Insert detected filepath's content here"
+      },
+      {
+        "command": "yutools.fmus-vscode.detect_insert_filepath_content_to_new_editor",
+        "title": "FmusVscode: Insert detected filepath's content beside"
+      },
+      {
+        "command": "yutools.fmus-vscode.detect_open_filepath",
+        "title": "FmusVscode: Open detected filepath"
+      },
+      {
+        "command": "yutools.ai.utils.prompt_with_file_content",
+        "title": "Buat prompt dengan isi file untuk chat"
+      },
+      {
+        "command": "yutools.llm.config.showSettingsPanel",
+        "title": "🔍🛠️LLM settings"
+      },
+      {
+        "command": "yutools.uri-encoder.encodeInsertAndCopy",
+        "title": "Dynamic command: encode JS string or oject utk open dynamic command"
+      },
+      {
+        "command": "yutools.dynamic-commands.openTerminalWithArgs",
+        "title": "Dynamic command: open terminal with dynamic command"
+      },
+      {
+        "command": "yutools.dynamic-commands.openDynamicFile",
+        "title": "Dynamic command: open dynamic file"
+      },
+      {
+        "command": "yutools.dynamic-commands.openDynamicUrl",
+        "title": "Dynamic command: open dynamic URL"
+      },
+      {
+        "command": "yutools.dynamic-commands.generateMarkdownLinkForTerminal",
+        "title": "Dynamic command: markdownstring open terminal"
+      },
+      {
+        "command": "yutools.dynamic-commands.generateMarkdownLinkForFile",
+        "title": "Dynamic command: markdownstring open file"
+      },
+      {
+        "command": "yutools.dynamic-commands.generateMarkdownLinkForUrl",
+        "title": "Dynamic command: markdownstring open URL"
+      },
+      {
+        "command": "yutools.browserAutomation.searchGoogle",
+        "title": "Auto: search google"
+      },
+      {
+        "command": "yutools.browserAutomation.screenshotNYTimes",
+        "title": "Auto: screenshot NYTimes"
+      },
+      {
+        "command": "yutools.browserAutomation.loginDatabuttonAndOpenGmail",
+        "title": "Auto: DataButton"
+      },
+      {
+        "command": "yutools.browserAutomation.databutton.newAppRandomEnterpriseApp",
+        "title": "Auto: databutton query random enterprise app"
+      },
+      {
+        "command": "yutools.browserAutomation.stackblitzAndBoltAutomationTry2",
+        "title": "Auto: Bolt"
+      },
+      {
+        "command": "yutools.browserAutomation.bolt.randomEnterpriseApp",
+        "title": "Auto: bolt query random enterprise app"
+      },
+      {
+        "command": "yutools.browserAutomation.generateFullstackApp",
+        "title": "Auto: DeepSeek Artifacts User Input"
+      },
+      {
+        "command": "yutools.browserAutomation.dsArtifactRandomEnterpriseApp",
+        "title": "Auto: DeepSeek Artifacts Auto"
+      },
+      {
+        "command": "yutools.browserAutomation.loginLovable",
+        "title": "Auto: Lovable"
+      },
+      {
+        "command": "yutools.browserAutomation.lovable.handleGitHubAuth",
+        "title": "Auto: Lovable github"
+      },
+      {
+        "command": "yutools.browserAutomation.lovable.handleSupabaseDropdown",
+        "title": "Auto: Lovable supabase"
+      },
+      {
+        "command": "yutools.browserAutomation.lovable.randomEnterpriseApp",
+        "title": "Auto: Lovable query random enterprise app"
+      },
+      {
+        "command": "yutools.prompts.replaceAndInvokeJobAdLLM",
+        "title": "LLM Job Ad process"
+      },
+      {
+        "command": "yutools.db.zendb.addPassword",
+        "title": "DB/Sqlite - Password add"
+      },
+      {
+        "command": "yutools.db.zendb.listPasswords",
+        "title": "DB/Sqlite - Password list"
+      },
+      {
+        "command": "yutools.db.zendb.updatePassword",
+        "title": "DB/Sqlite - Password upd"
+      },
+      {
+        "command": "yutools.db.zendb.deletePassword",
+        "title": "DB/Sqlite - Password del"
+      },
+      {
+        "command": "yutools.db.quicksnip.save",
+        "title": "DB/Sqlite - ➕QuickSnip add"
+      },
+      {
+        "command": "yutools.db.quicksnip.list",
+        "title": "DB/Sqlite - 📚QuickSnip list"
+      },
+      {
+        "command": "yutools.db.quicksnip.search",
+        "title": "DB/Sqlite - ✏️QuickSnip search"
+      },
+      {
+        "command": "yutools.db.quicksnip.delete",
+        "title": "DB/Sqlite - ❌QuickSnip del"
+      },
+      {
+        "command": "yutools.files.compress.compressFile",
+        "title": "Compress text file with args"
+      },
+      {
+        "command": "yutools.browserAutomation.github.automateGithubSignup",
+        "title": "Auto: Github signup"
+      },
+      {
+        "command": "yutools.browserAutomation.railway.automateRailwayLogin",
+        "title": "Auto: Railway signup"
+      },
+      {
+        "command": "yutools.folders.createAndOpenFolder",
+        "title": "Project under C:\\hapus"
+      },
+      {
+        "command": "yutools.folders.createAndOpenFolderWithArgs",
+        "title": "Project under C:\\hapus with args"
+      },
+      {
+        "command": "yutools.yuwidgets_widget1",
+        "title": "Widget 1"
+      },
+      {
+        "command": "yutools.yuwidgets_widget2",
+        "title": "Widget 2"
+      },
+      {
+        "command": "yutools.yuwidgets_widget3",
+        "title": "Widget 3 - Styled Combo"
+      },
+      {
+        "command": "yutools.yuwidgets_widget4",
+        "title": "Widget 4 - FMUS"
+      },
+      {
+        "command": "yutools.yuwidgets_widget5",
+        "title": "Widget 5 - LLM Form"
+      },
+      {
+        "command": "yutools.yuwidgets_widget6",
+        "title": "Widget 6 - Coder"
+      },
+      {
+        "command": "yutools.browser_profile_buttons",
+        "title": "📊Browser Profile👤"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "yutools.ctrl+l",
+        "key": "ctrl+l",
+        "mac": "cmd+l"
+      },
+      {
+        "command": "yutools.input_quick_exec_fmus",
+        "key": "ctrl+alt+["
+      },
+      {
+        "command": "yutools.input_quick_query_llm",
+        "key": "ctrl+alt+]"
+      },
+      {
+        "command": "yutools.showMultilineInputForFmus",
+        "key": "ctrl+alt+;"
+      },
+      {
+        "command": "yutools.showMultilineInputForLLM",
+        "key": "ctrl+alt+'"
+      },
+      {
+        "command": "yutools.browser_profile_buttons",
+        "key": "f12"
+      },
+      {
+        "command": "yutools.search_text_in_folder",
+        "key": "ctrl+alt+\\"
+      },
+      {
+        "command": "yutools.picker.showCommandPicker",
+        "key": "shift+alt+\\"
+      },
+      {
+        "command": "yutools.cmd.runDynamicCommand",
+        "key": "shift+alt+delete"
+      },
+      {
+        "command": "yutools.fmus-vscode.detect_open_filepath",
+        "key": "ctrl+shift+\\"
+      },
+      {
+        "command": "yutools.ai.utils.prompt_with_file_content",
+        "key": "ctrl+shift+/"
+      },
+      {
+        "command": "yutools.edit_markdown_help",
+        "key": "shift+f1"
+      },
+      {
+        "command": "yutools.editors.language.treatAsLanguage",
+        "key": "ctrl+alt+l"
+      },
+      {
+        "command": "yutools.errors.joinErrorsWithEnhancedFormat",
+        "key": "ctrl+f8"
+      },
+      {
+        "command": "yutools.errors.joinErrorsWithNumberingAndFileContentEnhanced",
+        "key": "ctrl+f9"
+      },
+      {
+        "command": "yutools.errors.applyTypescriptFixesWithTypeError",
+        "key": "ctrl+f10"
+      },
+      {
+        "command": "yutools.errors.applyAllQuickFixes",
+        "key": "ctrl+shift+numlock"
+      },
+      {
+        "command": "yutools.errors.joinErrorsWithCodeLLMFormat",
+        "key": "ctrl+shift+scrolllock"
+      },
+      {
+        "command": "yutools.tweet.redis.createTweet",
+        "key": "ctrl+shift+9",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "yutools.tweet.redis.viewTweets",
+        "key": "ctrl+shift+8",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "yutools.tweet.redis.deleteTweet",
+        "key": "ctrl+shift+7",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "prompt.fromSelection",
+        "key": "ctrl+alt+p s"
+      },
+      {
+        "command": "prompt.fromFile",
+        "key": "ctrl+alt+p f"
+      },
+      {
+        "command": "prompt.filterByTags",
+        "key": "ctrl+alt+p t"
+      },
+      {
+        "command": "prompt.search",
+        "key": "ctrl+alt+p q"
+      },
+      {
+        "command": "prompt.insert",
+        "key": "ctrl+alt+p i"
+      },
+      {
+        "command": "prompt.export",
+        "key": "ctrl+alt+p x"
+      },
+      {
+        "command": "prompt.fromFolder",
+        "key": "ctrl+alt+p o"
+      },
+      {
+        "command": "prompt.edit",
+        "key": "ctrl+alt+p e"
+      },
+      {
+        "command": "yutools.glassit_increase",
+        "key": "ctrl+alt+z"
+      },
+      {
+        "command": "yutools.glassit_decrease",
+        "key": "ctrl+alt+c"
+      },
+      {
+        "command": "yutools.glassit_minimize",
+        "key": "ctrl+alt+x"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "rimraf dist && node build-tsx.js && node build-css.js",
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "echo watch",
+    "--watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "echo watch-esbuild",
+    "--watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "echo watch-tsc",
+    "--watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "watch-tests": "echo watch-tests",
+    "--watch-tests": "tsc -p . -w --outDir out",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/cheerio": "^0.22.35",
+    "@types/diff": "^6.0.0",
+    "@types/fernet": "^0.4.3",
+    "@types/fluent-ffmpeg": "^2.1.27",
+    "@types/global-agent": "^2.1.3",
+    "@types/ioredis": "^4.28.10",
+    "@types/joi": "^17.2.2",
+    "@types/json2csv": "^5.0.7",
+    "@types/lodash": "^4.17.14",
+    "@types/mocha": "^10.0.6",
+    "@types/mongodb": "^4.0.6",
+    "@types/node": "^18.19.67",
+    "@types/node-powershell": "^4.0.3",
+    "@types/nodemailer": "^6.4.17",
+    "@types/pdf-parse": "^1.1.4",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/redis": "^4.0.10",
+    "@types/shell-quote": "^1.7.5",
+    "@types/vscode": "^1.96.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.3.9",
+    "autoprefixer": "^10.4.20",
+    "esbuild": "^0.20.2",
+    "eslint": "^8.57.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^1.0.5",
+    "@ai-sdk/azure": "^1.0.10",
+    "@ai-sdk/cohere": "^1.0.5",
+    "@ai-sdk/google": "^1.0.10",
+    "@ai-sdk/google-vertex": "^2.0.8",
+    "@ai-sdk/groq": "^1.0.8",
+    "@ai-sdk/openai": "^1.0.8",
+    "@ai-sdk/togetherai": "^0.0.7",
+    "@ai-sdk/xai": "^1.0.6",
+    "@anthropic-ai/bedrock-sdk": "^0.11.2",
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@anthropic-ai/vertex-sdk": "^0.5.2",
+    "@aws-sdk/client-s3": "^3.723.0",
+    "@cerebras/cerebras_cloud_sdk": "^1.15.0",
+    "@codemirror/lang-markdown": "^6.2.4",
+    "@codemirror/language": "^6.10.1",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@codemirror/view": "^6.24.1",
+    "@codesandbox/sandpack-react": "^2.19.10",
+    "@codesandbox/sdk": "^0.0.10",
+    "@google-cloud/dialogflow": "^6.13.0",
+    "@google-cloud/speech": "^6.7.0",
+    "@google-cloud/storage": "^7.14.0",
+    "@google-cloud/text-to-speech": "^5.7.0",
+    "@google-cloud/translate": "^8.5.0",
+    "@google/generative-ai": "^0.21.0",
+    "@hookform/resolvers": "^3.9.1",
+    "@huggingface/inference": "^2.8.1",
+    "@kubernetes/client-node": "^1.0.0",
+    "@langchain/anthropic": "^0.3.11",
+    "@langchain/cohere": "^0.3.2",
+    "@langchain/community": "^0.3.22",
+    "@langchain/core": "^0.3.27",
+    "@langchain/google-genai": "^0.1.6",
+    "@langchain/openai": "^0.3.16",
+    "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-alert-dialog": "^1.1.2",
+    "@radix-ui/react-aspect-ratio": "^1.1.0",
+    "@radix-ui/react-avatar": "^1.1.1",
+    "@radix-ui/react-checkbox": "^1.1.2",
+    "@radix-ui/react-collapsible": "^1.1.1",
+    "@radix-ui/react-context-menu": "^2.2.2",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-hover-card": "^1.1.2",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-menubar": "^1.1.2",
+    "@radix-ui/react-navigation-menu": "^1.2.1",
+    "@radix-ui/react-popover": "^1.1.2",
+    "@radix-ui/react-progress": "^1.1.0",
+    "@radix-ui/react-radio-group": "^1.2.1",
+    "@radix-ui/react-scroll-area": "^1.2.1",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slider": "^1.2.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-switch": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.1",
+    "@radix-ui/react-toast": "^1.2.2",
+    "@radix-ui/react-toggle": "^1.1.0",
+    "@radix-ui/react-toggle-group": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.4",
+    "@supabase/supabase-js": "^2.47.10",
+    "@tanstack/react-table": "^8.20.5",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@types/dockerode": "^3.3.32",
+    "@types/node-fetch": "^2.6.12",
+    "@uiw/react-codemirror": "^4.21.24",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "ai": "^4.0.18",
+    "archiver": "^7.0.1",
+    "assemblyai": "^4.8.0",
+    "axios": "^1.7.9",
+    "better-sqlite3": "^11.7.2",
+    "chart.js": "^4.4.7",
+    "cheerio": "^1.0.0",
+    "chromium-bidi": "^0.12.0",
+    "class-variance-authority": "^0.7.1",
+    "cloudinary": "^2.5.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
+    "cohere-ai": "^7.15.0",
+    "copy-image-clipboard": "^2.1.2",
+    "csv-parser": "^3.1.0",
+    "d3": "^7.9.0",
+    "date-fns": "^3.6.0",
+    "delay": "^6.0.0",
+    "diff": "^7.0.0",
+    "dockerode": "^4.0.2",
+    "embla-carousel-react": "^8.5.1",
+    "ethers": "^6.13.5",
+    "fernet": "^0.3.2",
+    "firebase-admin": "^13.0.2",
+    "fluent-ffmpeg": "^2.1.3",
+    "global-agent": "^3.0.0",
+    "globby": "^14.0.2",
+    "groq-sdk": "^0.9.0",
+    "i": "^0.3.7",
+    "idb": "^8.0.0",
+    "input-otp": "^1.4.1",
+    "ioredis": "^5.4.2",
+    "joi": "^17.13.3",
+    "json2csv": "^6.0.0-alpha.2",
+    "kafkajs": "^2.2.4",
+    "langchain": "^0.3.9",
+    "livekit-client": "^2.7.5",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.464.0",
+    "marked": "^15.0.3",
+    "mathjs": "^14.0.1",
+    "mkdirp": "^3.0.1",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.3",
+    "mysql2": "^3.11.5",
+    "neo4j-driver": "^5.27.0",
+    "next-themes": "^0.4.3",
+    "node-powershell": "^4.0.0",
+    "nodemailer": "^6.9.16",
+    "npm": "^11.0.0",
+    "ollama": "^0.5.11",
+    "openai": "^4.75.0",
+    "pdf-parse": "^1.1.1",
+    "pg": "^8.13.1",
+    "playwright": "^1.49.1",
+    "playwright-core": "^1.49.1",
+    "puppeteer": "^23.11.1",
+    "python-shell": "^5.0.0",
+    "react": "^18.3.1",
+    "react-day-picker": "^9.3.0",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.2",
+    "react-markdown": "^9.0.1",
+    "react-resizable-panels": "^2.1.7",
+    "react-syntax-highlighter": "^15.5.0",
+    "recharts": "^2.14.1",
+    "redis": "^4.7.0",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.0",
+    "screenshot-desktop": "^1.15.1",
+    "sharp": "^0.33.5",
+    "shell-quote": "^1.8.2",
+    "sonner": "^1.7.0",
+    "sqlite3": "^5.1.7",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "tar-fs": "^3.0.6",
+    "tesseract.js": "^5.1.1",
+    "tiktoken": "^1.0.18",
+    "together-ai": "^0.10.0",
+    "tree-sitter": "^0.22.4",
+    "tree-sitter-python": "^0.23.6",
+    "tree-sitter-typescript": "^0.23.2",
+    "tree-sitter-wasms": "^0.1.12",
+    "vaul": "^1.1.1",
+    "vscode": "^1.1.37",
+    "web-tree-sitter": "^0.24.4",
+    "winston": "^3.17.0",
+    "winston-vscode": "^1.0.0",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.2"
+  }
+}

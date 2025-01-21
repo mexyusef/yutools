@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "better_sqlite3", "better_sqlite3.vcxproj", "{6D499C3F-3E48-0172-7F67-1E4D6743C691}"
+	ProjectSection(ProjectDependencies) = postProject
+		{446813B7-FFE7-6517-EDCA-3CE4178FC28B} = {446813B7-FFE7-6517-EDCA-3CE4178FC28B}
+		{BC7B196F-5926-FD98-5774-41D6684F5629} = {BC7B196F-5926-FD98-5774-41D6684F5629}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "locate_sqlite3", "deps\locate_sqlite3.vcxproj", "{BC7B196F-5926-FD98-5774-41D6684F5629}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite3", "deps\sqlite3.vcxproj", "{446813B7-FFE7-6517-EDCA-3CE4178FC28B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC7B196F-5926-FD98-5774-41D6684F5629} = {BC7B196F-5926-FD98-5774-41D6684F5629}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_extension", "test_extension.vcxproj", "{F648F417-E979-EA6F-2970-E15B6F2E6045}"
+	ProjectSection(ProjectDependencies) = postProject
+		{446813B7-FFE7-6517-EDCA-3CE4178FC28B} = {446813B7-FFE7-6517-EDCA-3CE4178FC28B}
+		{BC7B196F-5926-FD98-5774-41D6684F5629} = {BC7B196F-5926-FD98-5774-41D6684F5629}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(deps)", "..\deps", "{01DF18E8-89C6-A25E-0006-40F7C4BCED1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{446813B7-FFE7-6517-EDCA-3CE4178FC28B}.Release|x64.ActiveCfg = Release|x64
+		{446813B7-FFE7-6517-EDCA-3CE4178FC28B}.Release|x64.Build.0 = Release|x64
+		{446813B7-FFE7-6517-EDCA-3CE4178FC28B}.Debug|x64.ActiveCfg = Debug|x64
+		{446813B7-FFE7-6517-EDCA-3CE4178FC28B}.Debug|x64.Build.0 = Debug|x64
+		{6D499C3F-3E48-0172-7F67-1E4D6743C691}.Release|x64.ActiveCfg = Release|x64
+		{6D499C3F-3E48-0172-7F67-1E4D6743C691}.Release|x64.Build.0 = Release|x64
+		{6D499C3F-3E48-0172-7F67-1E4D6743C691}.Debug|x64.ActiveCfg = Debug|x64
+		{6D499C3F-3E48-0172-7F67-1E4D6743C691}.Debug|x64.Build.0 = Debug|x64
+		{BC7B196F-5926-FD98-5774-41D6684F5629}.Release|x64.ActiveCfg = Release|x64
+		{BC7B196F-5926-FD98-5774-41D6684F5629}.Release|x64.Build.0 = Release|x64
+		{BC7B196F-5926-FD98-5774-41D6684F5629}.Debug|x64.ActiveCfg = Debug|x64
+		{BC7B196F-5926-FD98-5774-41D6684F5629}.Debug|x64.Build.0 = Debug|x64
+		{F648F417-E979-EA6F-2970-E15B6F2E6045}.Release|x64.ActiveCfg = Release|x64
+		{F648F417-E979-EA6F-2970-E15B6F2E6045}.Release|x64.Build.0 = Release|x64
+		{F648F417-E979-EA6F-2970-E15B6F2E6045}.Debug|x64.ActiveCfg = Debug|x64
+		{F648F417-E979-EA6F-2970-E15B6F2E6045}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC7B196F-5926-FD98-5774-41D6684F5629} = {01DF18E8-89C6-A25E-0006-40F7C4BCED1B}
+		{446813B7-FFE7-6517-EDCA-3CE4178FC28B} = {01DF18E8-89C6-A25E-0006-40F7C4BCED1B}
+	EndGlobalSection
+EndGlobal

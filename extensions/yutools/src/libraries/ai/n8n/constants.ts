@@ -1,0 +1,1 @@
+export const N8N_BASE_URL = 'https://your-n8n-instance.com/api/v1';

@@ -1,0 +1,68 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+import { ICustomWidgetService } from '../../contrib/yuagent/customWidgetService';
+import {
+	MainThreadCustomWidgetsShape,
+	ExtHostCustomWidgetsShape
+} from '../common/extHost.protocol.js';
+import { IDisposable } from 'vs/base/common/lifecycle';
+import { IInstantiationService } from 'vs/platform/instantiation/common/instantiation';
+import { IWidgetOptions } from '../../contrib/yuagent/customWidgetView';
+
+export class MainThreadCustomWidgets implements MainThreadCustomWidgetsShape {
+	private readonly _disposables: Map<string, IDisposable> = new Map();
+
+	constructor(
+		private readonly extHostContext: ExtHostCustomWidgetsShape,
+		@ICustomWidgetService private readonly widgetService: ICustomWidgetService,
+		@IInstantiationService private readonly instantiationService: IInstantiationService
+	) {
+		console.log('Using extHostContext:', this.extHostContext);
+		console.log('Using instantiationService:', this.instantiationService);
+	}
+
+	async $createWidget(widgetId: string, options: IWidgetOptions): Promise<void> {
+		if (this._disposables.has(widgetId)) {
+			console.warn(`Widget "${widgetId}" already exists.`);
+			return;
+		}
+
+		this.widgetService.createWidget(widgetId, options);
+		const disposable = {
+			dispose: () => this.widgetService.disposeWidget(widgetId),
+		};
+		this._disposables.set(widgetId, disposable);
+		console.log(`MainThread: Created widget "${widgetId}".`);
+	}
+
+	async $showWidget(widgetId: string): Promise<void> {
+		if (!this._disposables.has(widgetId)) {
+			console.warn(`Widget "${widgetId}" does not exist.`);
+			return;
+		}
+		this.widgetService.showWidget(widgetId);
+		console.log(`MainThread: Shown widget "${widgetId}".`);
+	}
+
+	async $hideWidget(widgetId: string): Promise<void> {
+		if (!this._disposables.has(widgetId)) {
+			console.warn(`Widget "${widgetId}" does not exist.`);
+			return;
+		}
+		this.widgetService.hideWidget(widgetId);
+		console.log(`MainThread: Hidden widget "${widgetId}".`);
+	}
+
+	async $disposeWidget(widgetId: string): Promise<void> {
+		const disposable = this._disposables.get(widgetId);
+		if (!disposable) {
+			console.warn(`Widget "${widgetId}" does not exist.`);
+			return;
+		}
+		disposable.dispose();
+		this._disposables.delete(widgetId);
+		console.log(`MainThread: Disposed widget "${widgetId}".`);
+	}
+}

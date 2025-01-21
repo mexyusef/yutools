@@ -1,0 +1,190 @@
+--% initial
+.,d
+  %PROJECT_DIR=
+  %HTML_TITLE=My-react app
+  PROJECT_DIR,d
+    $* npm init -y && npm install react react-dom
+    $* npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin
+    $* npm install --save-dev ts-loader @types/react @types/react-dom
+    src,d
+      $* touch src/index.tsx src/App.tsx
+      $* touch webpack.config.js tsconfig.json index.html
+--#
+
+--% index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+--#
+
+--% App.js
+import React from 'react';
+
+function App() {
+  return (
+    <div>
+      <h1>Hello, React with Webpack!</h1>
+    </div>
+  );
+}
+
+export default App;
+--#
+
+--% index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML_TITLE</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
+--#
+
+--% webpack.config.js/01
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    port: 3000,
+  },
+};
+--#
+
+--% .babelrc
+{
+	"presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+--#
+
+--% tsconfig.json
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "moduleResolution": "node"
+  }
+}
+--#
+
+--% webpack.config.js/02
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.tsx',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    port: 3000,
+  },
+};
+--#
+
+--% scripts to webpack.config.js/02
+"scripts": {
+  "start": "webpack serve --open --mode development",
+  "build": "webpack --mode production"
+}
+--#
+
+--% index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+--#
+
+--% App.tsx
+import React from 'react';
+
+const App: React.FC = () => {
+  return (
+    <div>
+      <h1>Hello, React with TypeScript and Webpack!</h1>
+    </div>
+  );
+};
+
+export default App;
+--#
+
+--% BACA.md
+masukkan berikut ini ke package.json
+
+"scripts": {
+  "start": "webpack serve --open --mode development",
+  "build": "webpack --mode production"
+}
+--#

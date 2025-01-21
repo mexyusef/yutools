@@ -1,0 +1,9 @@
+out
+dist
+node_modules
+.vscode-test/
+*.vsix
+.aider*
+package.json.gagal.md
+perubahan.package.json.md
+generated_images/

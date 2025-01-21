@@ -1,0 +1,76 @@
+C:\ai\cline\src\shared\WebviewMessage.ts
+export interface WebviewMessage {
+	type:
+		| "apiConfiguration"
+		| "customInstructions"
+		| "alwaysAllowReadOnly"
+		| "webviewDidLaunch"
+		| "newTask"
+		| "askResponse"
+		| "clearTask"
+		| "didShowAnnouncement"
+		| "selectImages"
+		| "exportCurrentTask"
+		| "showTaskWithId"
+		| "deleteTaskWithId"
+		| "exportTaskWithId"
+		| "resetState"
+		| "requestOllamaModels"
+		| "requestLmStudioModels"
+		| "openImage"
+		| "openFile"
+		| "openMention"
+		| "cancelTask"
+		| "refreshOpenRouterModels"
+	text?: string
+	askResponse?: ClineAskResponse
+	apiConfiguration?: ApiConfiguration
+	images?: string[]
+	bool?: boolean
+}
+
+./App.tsx:			vscode.postMessage({ type: "didShowAnnouncement" })
+
+./components/chat/Announcement.tsx:								vscode.postMessage({
+								vscode.postMessage({
+									type: "apiConfiguration",
+									apiConfiguration: { ...apiConfiguration, apiProvider: "openrouter" },
+								})
+./components/chat/BrowserSessionRow.tsx:								vscode.postMessage({
+								vscode.postMessage({
+									type: "openImage",
+									text: displayState.screenshot,
+								})
+./components/chat/ChatRow.tsx:									vscode.postMessage({ type: "openFile", text: tool.content })
+./components/chat/ChatView.tsx:					vscode.postMessage({ type: "newTask", text, images })
+./components/chat/ChatView.tsx:							vscode.postMessage({
+./components/chat/ChatView.tsx:		vscode.postMessage({ type: "clearTask" })
+./components/chat/ChatView.tsx:				vscode.postMessage({ type: "askResponse", askResponse: "yesButtonClicked" })
+./components/chat/ChatView.tsx:			vscode.postMessage({ type: "cancelTask" })
+./components/chat/ChatView.tsx:				vscode.postMessage({ type: "askResponse", askResponse: "noButtonClicked" })
+./components/chat/ChatView.tsx:		vscode.postMessage({ type: "selectImages" })
+
+./components/chat/TaskHeader.tsx:					onClick={() => vscode.postMessage({ type: "openMention", text: part })}>
+./components/chat/TaskHeader.tsx:		onClick={() => vscode.postMessage({ type: "exportCurrentTask" })}
+
+./components/common/Demo.tsx:	// 	vscode.postMessage({
+./components/common/Thumbnails.tsx:		vscode.postMessage({ type: "openImage", text: image })
+
+./components/history/HistoryPreview.tsx:		vscode.postMessage({ type: "showTaskWithId", text: id })
+./components/history/HistoryView.tsx:		vscode.postMessage({ type: "showTaskWithId", text: id })
+./components/history/HistoryView.tsx:		vscode.postMessage({ type: "deleteTaskWithId", text: id })
+./components/history/HistoryView.tsx:			vscode.postMessage({ type: "exportTaskWithId", text: itemId })
+
+./components/settings/ApiOptions.tsx:			vscode.postMessage({ type: "requestOllamaModels", text: apiConfiguration?.ollamaBaseUrl })
+./components/settings/ApiOptions.tsx:			vscode.postMessage({ type: "requestLmStudioModels", text: apiConfiguration?.lmStudioBaseUrl })
+
+./components/settings/OpenRouterModelPicker.tsx:		vscode.postMessage({ type: "refreshOpenRouterModels" })
+
+./components/settings/SettingsView.tsx:			vscode.postMessage({ type: "apiConfiguration", apiConfiguration })
+./components/settings/SettingsView.tsx:			vscode.postMessage({ type: "customInstructions", text: customInstructions })
+./components/settings/SettingsView.tsx:			vscode.postMessage({ type: "alwaysAllowReadOnly", bool: alwaysAllowReadOnly })
+./components/settings/SettingsView.tsx:		vscode.postMessage({ type: "resetState" })
+
+./components/welcome/WelcomeView.tsx:		vscode.postMessage({ type: "apiConfiguration", apiConfiguration })
+
+./context/ExtensionStateContext.tsx:		vscode.postMessage({ type: "webviewDidLaunch" })

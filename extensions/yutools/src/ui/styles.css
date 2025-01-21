@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  /* Blue Theme */
+  [data-theme="blue"] {
+    --background: 217 100% 99%;
+    --foreground: 217 91% 4%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 217 100% 99%;
+    --secondary: 217 50% 95%;
+    --secondary-foreground: 217 91% 4%;
+    --muted: 217 50% 95%;
+    --muted-foreground: 217 30% 40%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 217 100% 99%;
+    --border: 217 30% 90%;
+    --input: 217 30% 90%;
+    --ring: 217 91% 60%;
+  }
+
+  /* Purple Theme */
+  [data-theme="purple"] {
+    --background: 270 100% 99%;
+    --foreground: 270 91% 4%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 270 100% 99%;
+    --secondary: 270 50% 95%;
+    --secondary-foreground: 270 91% 4%;
+    --muted: 270 50% 95%;
+    --muted-foreground: 270 30% 40%;
+    --accent: 270 91% 65%;
+    --accent-foreground: 270 100% 99%;
+    --border: 270 30% 90%;
+    --input: 270 30% 90%;
+    --ring: 270 91% 65%;
+  }
+
+  /* Green Theme */
+  [data-theme="green"] {
+    --background: 150 100% 99%;
+    --foreground: 150 91% 4%;
+    --primary: 150 91% 45%;
+    --primary-foreground: 150 100% 99%;
+    --secondary: 150 50% 95%;
+    --secondary-foreground: 150 91% 4%;
+    --muted: 150 50% 95%;
+    --muted-foreground: 150 30% 40%;
+    --accent: 150 91% 45%;
+    --accent-foreground: 150 100% 99%;
+    --border: 150 30% 90%;
+    --input: 150 30% 90%;
+    --ring: 150 91% 45%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  /* Dark Blue Theme */
+  .dark[data-theme="blue"] {
+    --background: 217 50% 4%;
+    --foreground: 217 91% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 217 91% 96%;
+    --secondary: 217 50% 12%;
+    --secondary-foreground: 217 91% 96%;
+    --muted: 217 50% 12%;
+    --muted-foreground: 217 30% 70%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 217 91% 96%;
+    --border: 217 30% 20%;
+    --input: 217 30% 20%;
+    --ring: 217 91% 60%;
+  }
+
+  /* Dark Purple Theme */
+  .dark[data-theme="purple"] {
+    --background: 270 50% 4%;
+    --foreground: 270 91% 96%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 270 91% 96%;
+    --secondary: 270 50% 12%;
+    --secondary-foreground: 270 91% 96%;
+    --muted: 270 50% 12%;
+    --muted-foreground: 270 30% 70%;
+    --accent: 270 91% 65%;
+    --accent-foreground: 270 91% 96%;
+    --border: 270 30% 20%;
+    --input: 270 30% 20%;
+    --ring: 270 91% 65%;
+  }
+
+  /* Dark Green Theme */
+  .dark[data-theme="green"] {
+    --background: 150 50% 4%;
+    --foreground: 150 91% 96%;
+    --primary: 150 91% 45%;
+    --primary-foreground: 150 91% 96%;
+    --secondary: 150 50% 12%;
+    --secondary-foreground: 150 91% 96%;
+    --muted: 150 50% 12%;
+    --muted-foreground: 150 30% 70%;
+    --accent: 150 91% 45%;
+    --accent-foreground: 150 91% 96%;
+    --border: 150 30% 20%;
+    --input: 150 30% 20%;
+    --ring: 150 91% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+
+  .animate-neon-border {
+    animation: neon-border 1.5s ease-in-out infinite alternate;
+  }
+
+  .animate-neon-pulse {
+    animation: neon-pulse 1.5s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes neon-border {
+  from {
+    box-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #e60073,
+                0 0 40px #e60073,
+                0 0 50px #e60073,
+                0 0 60px #e60073,
+                0 0 70px #e60073;
+  }
+  to {
+    box-shadow: 0 0 20px #fff,
+                0 0 30px #ff4da6,
+                0 0 40px #ff4da6,
+                0 0 50px #ff4da6,
+                0 0 60px #ff4da6,
+                0 0 70px #ff4da6,
+                0 0 80px #ff4da6;
+  }
+}
+
+@keyframes neon-pulse {
+  from {
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px #fff,
+                 0 0 30px #e60073,
+                 0 0 40px #e60073,
+                 0 0 50px #e60073,
+                 0 0 60px #e60073,
+                 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff,
+                 0 0 30px #ff4da6,
+                 0 0 40px #ff4da6,
+                 0 0 50px #ff4da6,
+                 0 0 60px #ff4da6,
+                 0 0 70px #ff4da6,
+                 0 0 80px #ff4da6;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .7;
+  }
+}

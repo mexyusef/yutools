@@ -1,0 +1,24 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+// src/vs/workbench/contrib/myCustomWidget/common/myCustomWidget.ts
+
+import { createDecorator } from 'vs/platform/instantiation/common/instantiation';
+import { ICodeEditor } from 'vs/editor/browser/editorBrowser';
+
+export const IMyCustomWidgetService = createDecorator<IMyCustomWidgetService>('myCustomWidgetService');
+
+export interface IMyCustomWidgetService {
+	readonly _serviceBrand: undefined;
+	// Define your service methods
+	showWidget(editor: ICodeEditor): void;
+	hideWidget(editor: ICodeEditor): void;
+	updateWidgetContent(content: string): void;
+	// Add any other methods you want to expose
+	isWidgetVisible(): boolean;
+	getWidgetPosition(editorId: string): { line: number; column: number } | undefined;
+	// onWidgetStateChanged(editorId: string, visible: boolean): Promise<void>;
+	// onWidgetContentChanged(editorId: string, content: string): Promise<void>;
+	// onWidgetInteraction(editorId: string, type: 'submit' | 'cancel'): Promise<void>;
+}
